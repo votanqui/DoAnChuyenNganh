@@ -1,0 +1,322 @@
+﻿@model IPagedList<DoAnChuyenNganh.ViewModel.OrderAdminViewModel>
+@using PagedList;
+@{
+    ViewData["Title"] = "Order List";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    .custom-modal-size {
+        max-width: 95%; 
+        width: 1200px; 
+    }
+
+    .address-column {
+        max-width: 200px; /* Thay đổi giá trị này để điều chỉnh chiều rộng */
+        word-wrap: break-word; /* Tự động xuống dòng khi quá chiều rộng */
+        overflow-wrap: break-word; /* Tương thích tốt hơn với các trình duyệt */
+    }
+
+    .suggestion-item {
+        cursor: pointer;
+    }
+
+        .suggestion-item:hover {
+            background-color: #f1f1f1; /* Change background on hover */
+        }
+
+</style>
+<div class="container">
+    <h2 class="text-center">DANH SÁCH ĐƠN HÀNG</h2>
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 col-12 mb-2">
+                    <form method="post" action="@Url.Action("SearchOrder", "Admin")" id="searchOrderForm">
+                        <div class="input-group">
+                            <input id="searchKeyword" class="form-control" type="search" name="searchKeyword" placeholder="Nhập tên khách hàng" aria-label="Search" onkeyup="fetchSuggestions()">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul id="suggestions" class="list-group" style="display:none;"></ul>
+                </div>
+
+
+
+                <!-- Dropdown trạng thái đơn hàng -->
+                <div class="col-md-4 col-12 mb-2">
+                    <form action="/Admin/SearchByOrderStatus" method="get">
+                        <div class="input-group">
+                            <select class="custom-select" name="status" id="orderStatusSelect">
+                                <option selected>Chọn trạng thái</option>
+                                <option value="Đang Chuẩn Bị Hàng">Đang Chuẩn Bị Hàng</option>
+                                <option value="Đang giao hàng">Đang giao hàng</option>
+                                <option value="Đã giao">Đã giao</option>
+                                <option value="Đã hủy">Đã hủy</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (TempData["MessageOrder"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @TempData["MessageOrder"]
+        </div>
+    }
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Ngày Đặt</th>
+                            <th>Tổng Tiền</th>
+                            <th>Tiền Ship</th>
+                            <th>Thanh Toán</th>
+                            <th>Địa Chỉ</th>
+                            <th>Trạng Thái</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var orderViewModel in Model)
+                        {
+                            <tr>
+                                <td>@orderViewModel.Order.OrderID</td>
+                                <td>@orderViewModel.UserFullName</td>
+                                <td>@orderViewModel.Order.OrderDate.ToString("dd/MM/yyyy")</td>
+                                <td>@String.Format("{0:N0}", orderViewModel.Order.TotalAmount) VND</td>
+                                <td>@String.Format("{0:N0}", orderViewModel.Order.PriceShip) VND</td>
+                                <td>@orderViewModel.Order.PaymentMethod</td>
+                                <td class="address-column">@orderViewModel.Order.ShippingAddress</td> <!-- Áp dụng lớp cho cột địa chỉ -->
+                                <td>
+                                    <span>@orderViewModel.Order.Status</span>
+                                    <button class="btn btn-warning btn-sm" onclick="showEditStatusModal(@orderViewModel.Order.OrderID, '@orderViewModel.Order.Status')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#orderDetailsModal_@orderViewModel.Order.OrderID">
+                                        Chi tiết
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Pagination -->
+    <div class="text-center mt-3">
+        @if (Model.PageCount > 1)
+        {
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                    <!-- Previous Page Link -->
+                    @if (Model.HasPreviousPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("ListOrder", new { page = Model.PageNumber - 1 })">&laquo;</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                    }
+
+                    <!-- Page Number Links -->
+                    @for (var i = 1; i <= Model.PageCount; i++)
+                    {
+                        if (i == Model.PageNumber)
+                        {
+                            <li class="page-item active">
+                                <span class="page-link">@i</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ListOrder", new { page = i })">@i</a>
+                            </li>
+                        }
+                    }
+
+                    <!-- Next Page Link -->
+                    @if (Model.HasNextPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("ListOrder", new { page = Model.PageNumber + 1 })">&raquo;</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <span class="page-link">&raquo;</span>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+
+
+    <!-- Modal for order details -->
+    @foreach (var orderViewModel in Model)
+    {
+   
+
+        <div class="modal fade" id="orderDetailsModal_@orderViewModel.Order.OrderID" tabindex="-1" role="dialog" aria-labelledby="orderDetailsLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg custom-modal-size" role="document">
+                <!-- Thêm cả modal-lg và lớp tùy chỉnh -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderDetailsLabel">Chi tiết đơn hàng @orderViewModel.Order.OrderID</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Màu Sắc</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Ảnh</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Họ Tên</th>
+                                    <th>SĐT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detail in orderViewModel.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>@detail.Name</td> 
+                                        <td>@detail.SizeName</td> 
+                                        <td>@detail.ColorName</td>
+                                        <td>@detail.Quantity</td> 
+                                        <td>@String.Format("{0:N0}", detail.TotalPrice) VND</td> 
+                                        <td>
+                                            <img src="@detail.Image1" alt="@detail.Name" style="width: 100px; height: auto;" /> 
+                                        </td>
+                                        <td>@String.Format("{0:N0}", detail.TotalPrice * detail.Quantity) VND</td> 
+                                        <td>@detail.FullName</td> 
+                                        <td>@detail.Phone</td> 
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+<!-- Modal structure -->
+<div class="modal fade" id="editStatusModal" tabindex="-1" role="dialog" aria-labelledby="editStatusLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editStatusLabel">Cập nhật trạng thái đơn hàng</h5>
+                <!-- Đảm bảo có nút đóng -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="updateStatusForm" method="post" action="@Url.Action("UpdateOrderStatus", "Admin")">
+                <div class="modal-body">
+                    <input type="hidden" id="editOrderId" name="OrderID" />
+                    <div class="form-group">
+                        <label for="editOrderStatus">Chọn trạng thái mới:</label>
+                        <select id="editOrderStatus" name="Status" class="form-control">
+                            <option value="Đang Chuẩn Bị Hàng">Đang Chuẩn Bị Hàng</option>
+                            <option value="Đang giao hàng">Đang giao hàng</option>
+                            <option value="Đã giao">Đã giao</option>
+                            <option value="Đã hủy">Đã hủy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Đảm bảo modal đóng được khi bấm nút đóng
+    $('.close').on('click', function () {
+        $('#editStatusModal').modal('hide');
+    });
+
+    function fetchSuggestions() {
+        const keyword = $('#searchKeyword').val();
+        if (keyword.length > 0) {
+            $.ajax({
+                url: '@Url.Action("GetOrderSearchSuggestions", "Admin")',
+                data: { keyword: keyword },
+                success: function (suggestions) {
+                    $('#suggestions').empty();
+                    if (suggestions.length > 0) {
+                        suggestions.forEach(function (suggestion) {
+                            $('#suggestions').append(`<li class="list-group-item suggestion-item">${suggestion}</li>`);
+                        });
+                        $('#suggestions').show();
+                    } else {
+                        $('#suggestions').hide();
+                    }
+                },
+                error: function () {
+                    console.error('Error fetching suggestions');
+                }
+            });
+        } else {
+            $('#suggestions').hide();
+        }
+    }
+
+    function showEditStatusModal(orderId, currentStatus) {
+        $('#editOrderId').val(orderId);
+        $('#editOrderStatus').val(currentStatus);
+        $('#editStatusModal').modal('show');
+    }
+
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('#suggestions, #searchKeyword').length) {
+            $('#suggestions').hide();
+        }
+    });
+
+    $(document).on('click', '.suggestion-item', function () {
+        $('#searchKeyword').val($(this).text());
+        $('#suggestions').hide();
+    });
+</script>

@@ -1,0 +1,212 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.Category>
+@{
+    ViewData["Title"] = "Danh Sách Danh Mục";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@if (TempData["SuccessMessageCategory"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessageCategory"]
+    </div>
+}
+<div class="container mt-5">
+    <h2 class="text-center">DANH SÁCH DANH MỤC</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên Danh Mục</th>
+                            <th scope="col">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#addCategoryModal">
+                                    <i class="fas fa-plus"></i> Thêm mới
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr id="category-row-@category.CategoryID">
+                                <td>@category.CategoryID</td>
+                                <td>@category.CategoryName</td>
+                                <td>
+                                    <button class="btn btn-outline-primary edit-btn" data-id="@category.CategoryID" data-category="@category.CategoryName">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <form asp-action="DeleteCategory" asp-route-id="@category.CategoryID" method="post" style="display:inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-outline-danger" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Category -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCategoryModalLabel">Thêm Danh Mục Mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addCategoryForm">
+                    <div class="form-group">
+                        <label for="newCategoryName">Tên Danh Mục</label>
+                        <input type="text" class="form-control" id="newCategoryName" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="addCategoryBtn">Lưu danh mục mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Edit -->
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModalLabel">Chỉnh Sửa Danh Mục</h5>
+                <button type="button" class="close" id="editModalCloseIcon" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editCategoryForm">
+                    <input type="hidden" id="categoryId">
+                    <div class="form-group">
+                        <label for="editCategoryName">Tên Danh Mục</label>
+                        <input type="text" class="form-control" id="editCategoryName">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="editModalCloseBtn" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="saveCategoryChangesBtn">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- jQuery and Bootstrap JS (for modals) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Handle edit button click
+        $('.edit-btn').click(function () {
+            var categoryId = $(this).data('id');
+            var categoryName = $(this).data('category');
+
+            // Set values in the modal
+            $('#categoryId').val(categoryId);
+            $('#editCategoryName').val(categoryName);
+
+            // Show the modal
+            $('#editCategoryModal').modal('show');
+        });
+
+        $('#editModalCloseIcon').click(function () {
+            $('#editCategoryModal').modal('hide'); // Hide the modal
+        });
+
+        $('#editModalCloseBtn').click(function () {
+            $('#editCategoryModal').modal('hide'); // Hide the modal
+        });
+
+        // Save changes in the modal for editing
+        $('#saveCategoryChangesBtn').click(function () {
+            var categoryId = $('#categoryId').val();
+            var categoryName = $('#editCategoryName').val();
+
+            // Send AJAX request to update category
+            $.ajax({
+                url: '/Admin/EditCategory',
+                method: 'POST',
+                data: {
+                    CategoryID: categoryId,
+                    CategoryName: categoryName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Update the row in the table
+                        $('#category-row-' + categoryId).find('td').eq(1).text(categoryName);
+                        $('#editCategoryModal').modal('hide');
+                        location.reload();
+                    } else {
+                        alert('Error updating category');
+                    }
+                },
+                error: function () {
+                    alert('Error updating category');
+                }
+            });
+        });
+
+
+
+        // Handle add category button click
+        $('#addCategoryBtn').click(function () {
+            var newCategoryName = $('#newCategoryName').val();
+
+            // Send AJAX request to add new category
+            $.ajax({
+                url: '/Admin/AddCategory',
+                method: 'POST',
+                data: {
+                    CategoryName: newCategoryName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Add new row to the table
+                        var newRow = `<tr id="category-row-${response.newCategoryID}">
+                                    <td>${response.newCategoryID}</td>
+                                    <td>${newCategoryName}</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary edit-btn" data-id="${response.newCategoryID}" data-category="${newCategoryName}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger delete-btn" data-id="${response.newCategoryID}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>`;
+                        $('tbody').append(newRow);
+                        $('#newCategoryName').val(''); // Clear the input
+                        $('#addCategoryModal').modal('hide'); // Hide the modal
+                        location.reload();
+                    } else {
+                        alert('Error adding category');
+                    }
+                },
+                error: function () {
+                    alert('Error adding category');
+                }
+            });
+        });
+    });
+</script>

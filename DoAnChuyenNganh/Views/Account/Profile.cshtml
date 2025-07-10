@@ -1,0 +1,232 @@
+﻿@model DoAnChuyenNganh.ViewModel.UserProfileViewModel
+
+<style>
+    .btn-outline-primary {
+        border: 1px solid #007bff;
+        color: #007bff;
+        transition: background-color 0.3s;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+    .sidebar-hr {
+        border: none;
+        border-top: 2px solid #ccc;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .error-message {
+        color: red;
+    }
+
+    .success-message {
+        color: green;
+    }
+
+    #resultMessage {
+        margin-bottom: 15px; /* Khoảng cách cho thông báo */
+        font-weight: bold; /* Đậm thông báo */
+        color: red; /* Màu chữ đỏ cho thông báo */
+    }
+</style>
+
+<div class="container mt-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")" class="text-decoration-none">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Thông tin cá nhân</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3">
+            <div class="text-center">
+                <!-- Avatar image -->
+                <img src="https://via.placeholder.com/150" alt="Avatar" class="rounded-circle img-fluid mb-3">
+                <h4>@Model.Name</h4> <!-- Tên người dùng -->
+            </div>
+
+            <!-- Sidebar Navigation -->
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" onclick="showSection('account')">Tài khoản</a>
+                </li>
+                <hr class="sidebar-hr">
+                <li class="nav-item">
+                    <a class="nav-link profile" href="#" onclick="showSection('info')">Thông tin</a>
+                </li>
+                <hr class="sidebar-hr">
+                <li class="nav-item">
+                    <a class="nav-link password" href="#" onclick="showSection('password')">Đổi mật khẩu</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right Content -->
+        <div class="col-md-9 border-start border-2">
+            <!-- Default Content -->
+            <div id="account" class="content-section">
+                <p>Xin chào <strong>@Model.Name</strong> (Không phải tài khoản <strong>@Model.Name</strong>? <a href="#">Hãy thoát ra</a> và đăng nhập vào tài khoản của bạn)</p>
+                <p>Từ trang quản lý tài khoản bạn có thể xem <a href="#">thông tin tài khoản</a> và <a href="#">đổi mật khẩu</a>.</p>
+
+                <div class="d-flex justify-content-start">
+                    <a href="#" class="btn btn-outline-primary mr-2">Tài khoản</a>
+                    <a href="#" class="btn btn-outline-primary mr-2">Thông tin</a>
+                    <a href="#" class="btn btn-outline-primary">Đổi mật khẩu</a>
+                </div>
+            </div>
+            <div id="info" class="content-section hidden">
+                <div class="row justify-content-center">
+                    <div class="col-md-7 col-lg-5 col-xl-5">
+                        <img src="~/images/update-info.jpg" class="img-fluid mb-4" alt="User Info" /> <!-- Thay đổi hình ảnh nếu cần -->
+                    </div>
+                    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                        <div class="border rounded p-4">
+                            <h4 class="text-center mb-4">Thông tin người dùng</h4>
+                            <div id="resultMessage"></div>
+                            <form id="userInfoForm">
+                                <div class="form-group mb-3">
+                                    <label for="userName">Tên</label>
+                                    <input type="text" class="form-control" id="userName" name="Name" value="@Model.Name" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="userEmail">Email</label>
+                                    <input type="email" class="form-control" id="userEmail" name="Email" value="@Model.Email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="userPhone">Phone</label>
+                                    <input type="text" class="form-control" id="userPhone" name="Phone" value="@Model.Phone" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="userAddress">Địa Chỉ</label>
+                                    <input type="text" class="form-control" id="userAddress" name="Address" value="@Model.Address" required>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-primary" id="updateUserInfoBtn">Cập nhật</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="password" class="content-section hidden">
+                <div class="row justify-content-center">
+                    <div class="col-md-7 col-lg-5 col-xl-5">
+                        <img src="~/images/change-password.jpg" class="img-fluid mb-4" alt="Change Password" />
+                    </div>
+                    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                        <div class="border rounded p-4">
+                            <h2 class="text-center mb-4">Đổi mật khẩu</h2>
+                            <div id="resultMessage1"></div>
+                            <form id="changePasswordForm">
+                                @if (Model.IsPasswordSet) // Kiểm tra xem mật khẩu có tồn tại không
+                                {
+                                    <div class="form-group mb-3" id="currentPasswordContainer">
+                                        <label for="currentPassword" class="form-label">Mật khẩu hiện tại</label>
+                                        <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-warning">Bạn không có mật khẩu hiện tại để thay đổi.</div>
+                                }
+                                <div class="form-group mb-3">
+                                    <label for="newPassword" class="form-label">Mật khẩu mới</label>
+                                    <input type="password" class="form-control " id="newPassword" name="newPassword" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu mới</label>
+                                    <input type="password" class="form-control " id="confirmPassword" name="confirmPassword" required>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-primary" >Đổi mật khẩu</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById("userInfoForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Ngăn chặn việc reload trang
+
+        // Lấy dữ liệu từ form
+        var formData = new FormData(this);
+
+        // Gửi yêu cầu AJAX
+        fetch('/Account/UpdateUserInfo', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Xử lý phản hồi
+                var resultMessage = document.getElementById("resultMessage");
+                if (data.success) {
+                    resultMessage.innerHTML = "<div class='success-message alert alert-success'>" + data.message + "</div>";
+
+                } else {
+                    resultMessage.innerHTML = "<div class='error-message alert alert-danger'>" + data.message + "</div>";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+    document.getElementById("changePasswordForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Ngăn chặn việc reload trang
+
+        // Lấy dữ liệu từ form
+        var formData = new FormData(this);
+
+        // Gửi yêu cầu AJAX
+        fetch('/Account/ChangePassword', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Xử lý phản hồi
+                var resultMessage = document.getElementById("resultMessage1");
+                if (data.success) {
+                    resultMessage.innerHTML = "<div class='success-message alert alert-success'>" + data.message + "</div>";
+
+                } else {
+                    resultMessage.innerHTML = "<div class='error-message alert alert-danger '>" + data.message + "</div>";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+    function showSection(sectionId) {
+        // Ẩn tất cả các phần nội dung
+        var sections = document.querySelectorAll('.content-section');
+        sections.forEach(function (section) {
+            section.classList.add('hidden');
+        });
+
+        // Hiện phần nội dung được chọn
+        document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+</script>

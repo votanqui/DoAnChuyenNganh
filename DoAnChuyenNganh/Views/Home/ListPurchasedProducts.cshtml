@@ -1,0 +1,125 @@
+﻿@model IPagedList<DoAnChuyenNganh.ViewModel.PurchasedProductViewModel>
+@using PagedList;
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sản Phẩm Đã Mua</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center">Không có sản phẩm nào được tìm thấy.</div>
+    }
+    else
+    {
+        @foreach (var orderModel in Model)
+        {
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Đơn hàng: #@orderModel.Order.OrderID</h5>
+                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#orderDetailsModal-@orderModel.Order.OrderID">Xem Chi Tiết Đơn Hàng</button>
+                </div>
+                <div class="card-body">
+                    <p><strong>Ngày đặt:</strong> @orderModel.Order.OrderDate.ToString("dd/MM/yyyy")</p>
+                    <p><strong>Tổng tiền:</strong> @String.Format("{0:N0}", orderModel.Order.TotalAmount) VND</p>
+                    <p><strong>Trạng thái:</strong> <span class="badge bg-success">@orderModel.Order.Status</span></p>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="orderDetailsModal-@orderModel.Order.OrderID" tabindex="-1" aria-labelledby="orderDetailsLabel-@orderModel.Order.OrderID" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="orderDetailsLabel-@orderModel.Order.OrderID">Chi Tiết Đơn Hàng: #@orderModel.Order.OrderID</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover align-middle">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Hình Ảnh</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Size</th>
+                                            <th>Màu Sắc</th>
+                                            <th>Số Lượng</th>
+                                            <th>Giá</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var detail in orderModel.OrderDetails)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <img src="@detail.Image1" alt="Product Image" class="img-thumbnail" style="width: 100px; height: auto;">
+                                                </td>
+                                                <td>@detail.Name</td>
+                                                <td>@detail.SizeName</td>
+                                                <td>@detail.ColorName</td>
+                                                <td>@detail.Quantity</td>
+                                                <td>@String.Format("{0:N0}", detail.TotalPrice) VND</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="d-flex justify-content-center mt-4">
+        @{
+            var totalPages = Model.PageCount;
+            var currentPage = Model.PageNumber;
+            var maxPagesToShow = 5;
+            var startPage = Math.Max(1, currentPage - (maxPagesToShow / 2));
+            var endPage = Math.Min(totalPages, startPage + maxPagesToShow - 1);
+
+            if (endPage - startPage + 1 < maxPagesToShow)
+            {
+                startPage = Math.Max(1, endPage - maxPagesToShow + 1);
+            }
+        }
+
+        @if (totalPages > 1)
+        {
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+                    @if (currentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("ListPurchasedProducts", new { page = currentPage - 1 })">Trước</a>
+                        </li>
+                    }
+
+                    @for (var i = startPage; i <= endPage; i++)
+                    {
+                        if (i == currentPage)
+                        {
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">@i</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ListPurchasedProducts", new { page = i })">@i</a>
+                            </li>
+                        }
+                    }
+
+                    @if (currentPage < totalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("ListPurchasedProducts", new { page = currentPage + 1 })">Tiếp</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+</div>

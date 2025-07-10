@@ -1,0 +1,147 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<section class="h-100">
+    <div class="container h-100 py-5">
+        <div class="row justify-content-center mb-5">
+            <div class="col-3 text-center">
+                <!-- Ô Giỏ hàng đang chọn -->
+                <div class="rounded-circle bg-primary text-white mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    01
+                </div>
+                <p class="mt-2 font-weight-bold text-primary">Giỏ hàng</p>
+            </div>
+
+            <div class="col-3 text-center">
+                <!-- Ô Thanh toán với background trắng và text đen -->
+                <div class="rounded-circle bg-white text-dark border mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    02
+                </div>
+                <p class="mt-2 text-dark">Thanh toán</p>
+            </div>
+
+            <div class="col-3 text-center">
+                <!-- Ô Hoàn thành với background trắng và text đen -->
+                <div class="rounded-circle bg-white text-dark border mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    03
+                </div>
+                <p class="mt-2 text-dark">Hoàn thành</p>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                @if (TempData["SuccessMessageDelete"] != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["SuccessMessageDelete"]
+                    </div>
+                }
+               @foreach (var item in Model)
+                {
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body p-4">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <img src="@item.Image1" class="img-fluid rounded-3" alt="@item.Name">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                    <p class="lead fw-normal mb-2">@item.Name</p>
+                                    <p><span class="text-muted">Size: </span>@item.SizeName <span class="text-muted">Màu sắc: </span>@item.ColorName</p>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <form method="post" action="/Home/UpdateQuantity" class="d-flex">
+                                        <input type="hidden" name="cartItemId" value="@item.CartItemID" />
+
+                                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                                onclick="updateQuantity(this, -1)">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
+                                        <input id="form1" min="0" name="quantity" value="@item.Quantity" type="number"
+                                               class="form-control form-control-sm"  />
+
+                                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                                onclick="updateQuantity(this, 1)">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <h5 class="mb-0">@String.Format("{0:#,0} VND", item.TotalPrice)</h5>
+                                </div>
+
+                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                    <form method="post" action="/Cart/RemoveFromCart">
+                                        <input type="hidden" name="cartItemId" value="@item.CartItemID" />
+                                        <button type="submit" class="text-danger btn btn-link">
+                                            <i class="fas fa-trash fa-lg"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+               
+                <!-- Hiển thị tổng tiền -->
+                @{
+                    var totalAmount = Model.Sum(item => (item.SalePrice ?? item.Price) * item.Quantity);
+                }
+
+                <div class="card mx-auto text-center border-0 shadow-sm" style="max-width: 400px; background-color: #f9f9f9;">
+                    <div class="card-body">
+                        <h5 class="mb-3 fw-bold text-dark">Tổng tiền: @String.Format("{0:#,0} VND", totalAmount)</h5>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-0">
+                        <button type="button" class="btn btn-primary btn-lg w-50 text-uppercase fw-bold"
+                                onclick="location.href='@Url.Action("Checkout", "Cart")'">
+                            thanh toán
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function updateQuantity(button, change) {
+        const form = button.closest('form');
+        const input = form.querySelector('input[name=quantity]');
+        const currentQuantity = parseInt(input.value);
+
+        // Update the quantity
+        const newQuantity = Math.max(0, currentQuantity + change);
+        input.value = newQuantity;
+
+        // Send the updated quantity to the controller via AJAX
+        $.ajax({
+            url: '@Url.Action("UpdateQuantity", "Cart")',  // The form's action attribute
+            type: 'POST',
+            data: {
+                cartItemId: form.querySelector('input[name="cartItemId"]').value,
+                quantity: newQuantity
+            },
+            success: function (response) {
+                location.reload()
+                alert("Cập nhật giỏ hàng thành công!");
+            },
+            error: function () {
+                alert("Cập nhật giỏ hàng thất bại. Vui lòng thử lại.");
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,57 @@
+﻿@model DoAnChuyenNganh.Models.Gmail
+
+@{
+    ViewData["Title"] = "Khôi Phục Mật Khẩu";
+}
+<body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+                <div class="col-md-8 col-lg-7 col-xl-6">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                         class="img-fluid" alt="Password Recovery Image">
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <div class="border rounded p-4">
+                        <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+                        <div>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div style="color: red;">@ViewBag.Message</div>
+                            }
+                            else if (TempData["SuccessMessage"] != null)
+                            {
+                                <div style="color: green;">@TempData["SuccessMessage"]</div>
+                            }
+                        </div>
+
+                        <form asp-action="Send" method="post">
+                            <div class="form-outline mb-4">
+                                <label for="To" class="form-label">Địa chỉ email (Gmail):</label>
+                                <input type="email" asp-for="To" class="form-control form-control-lg" required />
+                                <span asp-validation-for="To" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block w-100">Gửi Mật Khẩu Mới</button>
+                        </form>
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @TempData["ErrorMessage"]
+                            </div>
+                        }
+                        <div class="text-center mt-4">
+                            <p class="small fw-bold mt-2 pt-1 mb-0">
+                                <a href="@Url.Action("Login", "Account")" class="link-danger">Trở về trang đăng nhập</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

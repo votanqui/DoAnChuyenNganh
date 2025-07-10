@@ -1,0 +1,75 @@
+﻿@model IPagedList<DoAnChuyenNganh.ViewModel.WishlistProductViewModel>
+@using PagedList;
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sản Phẩm Yêu Thích</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="text-center">Bạn chưa có sản phẩm yêu thích nào.</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <!-- Link đến chi tiết sản phẩm -->
+                        <a href="@Url.Action("Details", "Home", new { id = item.Product.ProductID })" class="text-decoration-none">
+                            <img src="@item.Product.Image1" class="card-img-top" alt="@item.Product.Name">
+                            <div class="card-body">
+                                <!-- Tên sản phẩm -->
+                                <h5 class="card-title text-center">@item.Product.Name</h5>
+
+                                <!-- Hiển thị giá -->
+                                <div class="text-center">
+                                    @if (item.Product.SalePrice > 0)
+                                    {
+                                        <span class="text-muted text-decoration-line-through">
+                                            @(item.Product.Price.HasValue ? item.Product.Price.Value.ToString("N0") : "0") VND
+                                        </span>
+                                        <span class="text-danger fw-bold ms-2">
+                                            @(item.Product.SalePrice.HasValue ? item.Product.SalePrice.Value.ToString("N0") : "0") VND
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-dark">
+                                            @(item.Product.Price.HasValue ? item.Product.Price.Value.ToString("N0") : "0") VND
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Nút xóa yêu thích -->
+                        <button class="wishlist-btn bg-white border-0 d-flex text-start" data-product-id="@item.Product.ProductID">
+                            <i class="fas fa-heart text-danger"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-2">
+            @{
+                var totalPages = Model.PageCount;
+                var currentPage = Model.PageNumber;
+            }
+
+            @for (var i = 1; i <= totalPages; i++)
+            {
+                if (i == currentPage)
+                {
+                    <span class="btn btn-secondary disabled">@i</span>
+                }
+                else
+                {
+                    <a class="btn btn-primary" href="@Url.Action("ListUser", new { page = i })">@i</a>
+                }
+            }
+        </div>
+  
+    }
+</div>

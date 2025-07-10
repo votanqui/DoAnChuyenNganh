@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+                <div class="col-md-8 col-lg-7 col-xl-6 d-none d-lg-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                         class="img-fluid" alt="Phone image">
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <div class="card rounded-3 shadow">
+                        <div class="card-body p-5">
+                            <h3 class="text-center mb-4">Đăng Ký</h3>
+                            <form asp-action="Register" method="post">
+                                <!-- Full Name input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form1ExampleFullName">Họ và Tên</label>
+                                    <input type="text" id="form1ExampleFullName" name="fullName" class="form-control form-control-lg @((ViewBag.FullNameError != null) ? "is-invalid" : "")"
+                                           value="@ViewBag.FullName" required />
+                                    <div class="invalid-feedback">@ViewBag.FullNameError</div>
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form1ExampleEmail">Email</label>
+                                    <input type="email" id="form1ExampleEmail" name="email" class="form-control form-control-lg @((ViewBag.EmailError != null) ? "is-invalid" : "")"
+                                           value="@ViewBag.Email" required />
+                                    <div class="invalid-feedback">@ViewBag.EmailError</div>
+                                </div>
+
+                                <!-- Phone input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form1ExamplePhone">Số Điện Thoại</label>
+                                    <input type="tel" id="form1ExamplePhone" name="phone" class="form-control form-control-lg @((ViewBag.PhoneError != null) ? "is-invalid" : "")"
+                                           value="@ViewBag.Phone" required />
+                                    <div class="invalid-feedback">@ViewBag.PhoneError</div>
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form1ExamplePassword">Mật Khẩu</label>
+                                    <input type="password" id="form1ExamplePassword" name="password" class="form-control form-control-lg @((ViewBag.ErrorMessage != null) ? "is-invalid" : "")" required />
+                                    <div class="invalid-feedback">@ViewBag.ErrorMessage</div>
+                                </div>
+
+                                <!-- Confirm Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form1ExampleConfirmPassword">Nhập lại mật khẩu</label>
+                                    <input type="password" id="form1ExampleConfirmPassword" name="confirmPassword" class="form-control form-control-lg @((ViewBag.ErrorMessage != null) ? "is-invalid" : "")" required />
+                                    <div class="invalid-feedback">@ViewBag.ErrorMessage</div>
+                                </div>
+                               
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary btn-lg btn-block w-100">Đăng Ký</button>
+
+                                <div class="text-center mt-4">
+                                    <p class="small fw-bold mt-2 pt-1 mb-0">
+                                        Đã có tài khoản?
+                                        <a href="/Account/Login" class="link-danger">Đăng Nhập</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

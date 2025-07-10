@@ -1,0 +1,264 @@
+﻿@model DoAnChuyenNganh.ViewModel.ProductViewModel
+
+    <title>Trang Chủ</title
+
+<body>
+    <div class="modal fade" id="homeContentModal" tabindex="-1" aria-labelledby="homeContentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="homeContentModalLabel">Thông Báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @Model.HomeContent.Notification
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>              
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" bg-section" style="background-image: url('@Model.HomeContent.Image1');">
+    <section class="container container-fluid  text-center py-5 position-relative">
+        <div class="row align-items-center justify-content-center text-md-start mt-5">
+            <div class="col-md-6 ps-5">
+                <small class="text-muted">New in</small>
+                <h1 class="fw-bold" id="active-product-name">@Model.ActiveProducts[0].Name</h1>
+                <p class="text-muted" id="active-product-description">@Model.ActiveProducts[0].Description</p>
+                <a href="#" class="btn btn-primary rounded-pill mt-3 px-4 py-2">Xem sản phẩm</a>
+            </div>
+
+            <!-- Product Image -->
+            <div class="col-md-6 text-center">
+                <img id="active-product-image" src="@Model.ActiveProducts[0].Image1" alt="@Model.ActiveProducts[0].Name" class="img-fluid" style="width: 80%; max-width: 400px;" />
+            </div>
+        </div>
+
+        <!-- Navigation Icons -->
+        <div class="position-absolute top-50 start-0 translate-middle-y" style="left: 20px;">
+            <button id="prev-active-btn" class="btn btn-light"><i class="bi bi-chevron-left"></i></button>
+        </div>
+        <div class="position-absolute top-50 end-0 translate-middle-y" style="right: 20px;">
+            <button id="next-active-btn" class="btn btn-light"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </section>
+    </div>
+    <div class="container mt-5">
+        <!-- Row 1: Main col-8 and col-4 -->
+        <div class="row gap-15">
+            <!-- col-lg-8 containing two rows inside -->
+            <div class="col-md-8">
+
+                <div class="row gap-15">
+                    <div class="col-md-8 col-sm-12">
+                        <img src="@Model.HomeContent.Image2" class="custom-img" alt="Image 1">
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <img src="@Model.HomeContent.Image3" class="custom-img" alt="Image 2">
+                    </div>
+                </div>
+                <!-- Row 2: col-4 and col-8 inside col-lg-8 -->
+                <div class="row gap-16 mt-3">
+                    <div class="col-md-4 col-sm-12">
+                        <img src="@Model.HomeContent.Image4" class="custom-img" alt="Image 4">
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <img src="@Model.HomeContent.Image5" class="custom-img" alt="Image 5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main col-lg-4 -->
+            <div class="col-md-4">
+                <img src="@Model.HomeContent.Image6" class="custom-img-1" alt="Image 3">
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="bg-white rounded-3 p-4 shadow-sm">
+                    <div class="row text-center">
+                        <!-- Feature 1 -->
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <img src="~/images/freeship.png" alt="Giao hàng miễn phí" class="mb-3 img-fluid" style="max-width: 100px; max-height: 100px;">
+                                <h6 class="fw-bold">Giao Hàng Miễn Phí</h6>
+                                <p class="text-muted">Sản phẩm được vận chuyển miễn phí.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <img src="~/images/chinh-sach-doi-tra.png" alt="Đổi trả hàng" class="mb-3 img-fluid" style="max-width: 100px; height: 100%;">
+                                <h6 class="fw-bold">Đổi Trả Hàng</h6>
+                                <p class="text-muted">Sản phẩm được đổi trả trong 3 ngày.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <img src="~/images/ho-tro-24-7.png" alt="Hỗ trợ 24/7" class="mb-3 img-fluid" style="max-width: 100px;  height: 100%;">
+                                <h6 class="fw-bold">Hỗ Trợ 24/7</h6>
+                                <p class="text-muted">Luôn có mặt để hỗ trợ khách hàng.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 4 -->
+                        <div class="col-md-3">
+                            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <img src="~/images/giaohang.png" alt="Giao hàng nhận tiền" class="mb-3 img-fluid" style="max-width: 100px;  height: 100%;">
+                                <h6 class="fw-bold">Giao Hàng Nhận Tiền</h6>
+                                <p class="text-muted">Thanh toán tiền mặt sau khi nhận.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section class="container mt-5">
+        <h2 class="text-center text-primary my-4">Tất cả sản phẩm</h2>
+        <div class="row">
+            @for (int i = 0; i < Model.AllProducts.Count; i++)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4 product-item" data-index="@i">
+                    <div class="card h-100">
+                        <a href="@Url.Action("Details", "Home", new { id = Model.AllProducts[i].ProductID })" class="text-decoration-none">
+                            <img src="@Model.AllProducts[i].Image1" class="card-img-top" alt="@Model.AllProducts[i].Name">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">@Model.AllProducts[i].Name</h5>
+
+                                <!-- Display Price and SalePrice in the same row -->
+                                <div class="text-center">
+                                    @if (Model.AllProducts[i].SalePrice > 0)
+                                    {
+                                        <span class="text-muted text-decoration-line-through">
+                                            @String.Format("{0:N0}", Model.AllProducts[i].Price) VND
+                                        </span>
+                                        <span class="text-danger fw-bold ms-2" style="font-size: larger;">
+                                            @String.Format("{0:N0}", Model.AllProducts[i].SalePrice) VND
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-dark">
+                                            @String.Format("{0:N0}", Model.AllProducts[i].Price) VND
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <button class="btn btn-sm btn-outline-primary">Xem Chi Tiết</button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Navigation for all products -->
+        <div class="d-flex justify-content-between mt-3">
+
+            <button id="prev-all-btn" class="btn btn-light" style="display: none;"><i class="bi bi-chevron-left"></i></button>
+            <button id="next-all-btn" class="btn btn-light"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </section>
+
+
+    <!-- JavaScript for product navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show the modal when the page loads
+            var myModal = new bootstrap.Modal(document.getElementById('homeContentModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        });
+        let activeProductIndex = 0;
+        const activeProducts = @Html.Raw(Json.Serialize(Model.ActiveProducts));
+        const allProducts = @Html.Raw(Json.Serialize(Model.AllProducts));
+        const allProductItems = document.querySelectorAll('.product-item');
+        let allProductIndex = 0;
+
+        // Hàm để kiểm tra kích thước màn hình và trả về số sản phẩm cần hiển thị
+        function getVisibleProductCount() {
+            if (window.innerWidth <= 768) { // Màn hình nhỏ (mobile)
+                return 2;
+            }
+            return 4; // Màn hình lớn (desktop)
+        }
+
+        function updateActiveProductDisplay(index) {
+            const product = activeProducts[index];
+            document.getElementById('active-product-name').textContent = product.name;
+            document.getElementById('active-product-description').textContent = product.description;
+            document.getElementById('active-product-image').src = product.image1;
+            document.getElementById('active-product-image').alt = product.name;
+        }
+
+        function updateAllProductDisplay() {
+            const visibleProductCount = getVisibleProductCount();
+
+            // Ẩn tất cả sản phẩm
+            allProductItems.forEach((item) => {
+                item.style.display = 'none';
+            });
+
+            // Hiển thị số sản phẩm tương ứng với kích thước màn hình
+            for (let i = allProductIndex; i < allProductIndex + visibleProductCount; i++) {
+                if (i < allProductItems.length) {
+                    allProductItems[i].style.display = 'block';
+                }
+            }
+
+            // Cập nhật hiển thị nút điều hướng
+            document.getElementById('prev-all-btn').style.display = (allProductIndex === 0) ? 'none' : 'block';
+            document.getElementById('next-all-btn').style.display = (allProductIndex + visibleProductCount >= allProductItems.length) ? 'none' : 'block';
+        }
+
+        // Xử lý khi nhấn nút Next cho sản phẩm hoạt động
+        document.getElementById('next-active-btn').addEventListener('click', function () {
+            activeProductIndex = (activeProductIndex + 1) % activeProducts.length;
+            updateActiveProductDisplay(activeProductIndex);
+        });
+
+        // Xử lý khi nhấn nút Prev cho sản phẩm hoạt động
+        document.getElementById('prev-active-btn').addEventListener('click', function () {
+            activeProductIndex = (activeProductIndex - 1 + activeProducts.length) % activeProducts.length;
+            updateActiveProductDisplay(activeProductIndex);
+        });
+
+        // Xử lý khi nhấn nút Next cho tất cả sản phẩm
+        document.getElementById('next-all-btn').addEventListener('click', function () {
+            const visibleProductCount = getVisibleProductCount();
+            allProductIndex++;
+            if (allProductIndex + visibleProductCount > allProductItems.length) {
+                allProductIndex = allProductItems.length - visibleProductCount; // Giới hạn ở cuối danh sách
+            }
+            updateAllProductDisplay();
+        });
+
+        // Xử lý khi nhấn nút Prev cho tất cả sản phẩm
+        document.getElementById('prev-all-btn').addEventListener('click', function () {
+            allProductIndex--;
+            if (allProductIndex < 0) {
+                allProductIndex = 0; // Giới hạn ở đầu danh sách
+            }
+            updateAllProductDisplay();
+        });
+
+        // Khi thay đổi kích thước màn hình, cập nhật hiển thị sản phẩm
+        window.addEventListener('resize', updateAllProductDisplay);
+
+        // Khởi tạo hiển thị cho sản phẩm đầu tiên
+        updateAllProductDisplay();
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+

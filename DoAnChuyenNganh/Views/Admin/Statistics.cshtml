@@ -1,0 +1,128 @@
+﻿@model DoAnChuyenNganh.ViewModel.StatisticsViewModel
+
+@{
+    ViewData["Title"] = "Thống kê";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Thống kê</h2>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Tổng người dùng</div>
+                <div class="card-body">
+                    <h5 class="card-title">@Model.TotalUsers</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Người dùng mới hôm nay</div>
+                <div class="card-body">
+                    <h5 class="card-title">@Model.NewUsersToday</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Doanh thu tháng</div>
+                <div class="card-body">
+                    <h5 class="card-title">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", Model.TotalRevenueThisMonth)</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header">Tổng doanh thu</div>
+                <div class="card-body">
+                    <h5 class="card-title">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", Model.TotalRevenueOverall)</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biểu đồ -->
+    <h3 class="text-center mb-4">Biểu đồ</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="usersChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Bảng thống kê -->
+    <h3 class="text-center mt-5">Thống kê đơn hàng theo tuần</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Tuần</th>
+                <th scope="col">Số lượng đơn hàng</th>
+                <th scope="col">Tổng doanh thu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrdersByWeek)
+            {
+                <tr>
+                    <td>@item.Week</td>
+                    <td>@item.TotalOrders</td>
+                    <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.TotalRevenue)</td>
+                </tr>
+            }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Biểu đồ doanh thu
+    var revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    var revenueChart = new Chart(revenueCtx, {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Json.Serialize(Model.OrdersByWeek.Select(o => $"Tuần {o.Week}"))),
+            datasets: [{
+                label: 'Doanh thu (VNĐ)',
+                data: @Html.Raw(Json.Serialize(Model.OrdersByWeek.Select(o => o.TotalRevenue))),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            let value = context.raw || 0;
+                            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Biểu đồ người dùng
+    var usersCtx = document.getElementById('usersChart').getContext('2d');
+    var usersChart = new Chart(usersCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Hôm nay', 'Tháng này'],
+            datasets: [{
+                label: 'Người dùng',
+                data: [@Model.NewUsersToday, @Model.TotalUsers],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                borderWidth: 2
+            }]
+        }
+    });
+</script>

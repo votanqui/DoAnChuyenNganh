@@ -1,0 +1,170 @@
+﻿@model IPagedList<DoAnChuyenNganh.ViewModel.ListUserViewModel>
+@using PagedList;
+
+@{
+    ViewData["Title"] = "Danh sách người dùng";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="container">
+    <h2 class="text-center">DANH SÁCH NGƯỜI DÙNG</h2>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên người dùng</th>
+                            <th>Email</th>
+                            <th>Ngày đăng ký</th>
+                            <th>Quyền</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var userViewModel in Model)
+                        {
+                            <tr>
+                                <td>@userViewModel.user.UserID</td>
+                                <td>@userViewModel.user.FullName</td>
+                                <td>@userViewModel.user.Email</td>
+                                <td>@userViewModel.user.CreatedAt.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    @if (userViewModel.user.Role == "Admin")
+                                    {
+                                        <span class="badge bg-primary role-text" data-role="@userViewModel.user.Role">Admin</span>
+                                    }
+                                    else if (userViewModel.user.Role == "employee")
+                                    {
+                                        <span class="badge bg-secondary role-text" data-role="@userViewModel.user.Role">Nhân Viên</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning role-text" data-role="@userViewModel.user.Role">Khách hàng</span>
+                                    }
+                                    <i class="bi bi-pencil-square edit-role" data-user-id="@userViewModel.user.UserID"></i>
+                                </td>
+                                <td>@userViewModel.HasPurchased</td>
+                                <td>
+                                    <form asp-action="DeleteUser" method="post" class="d-inline">
+                                        <input type="hidden" name="id" value="@userViewModel.user.UserID" />
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');">
+                                            Xóa
+                                        </button>
+                                    </form>
+                                </td>
+
+                             
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        @if (Model.PageCount > 1)
+        {
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                    @if (Model.HasPreviousPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("ListUser", new { page = Model.PageNumber - 1 })">&laquo;</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                    }
+
+                    @for (var i = 1; i <= Model.PageCount; i++)
+                    {
+                        if (i == Model.PageNumber)
+                        {
+                            <li class="page-item active">
+                                <span class="page-link">@i</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ListUser", new { page = i })">@i</a>
+                            </li>
+                        }
+                    }
+
+                    @if (Model.HasNextPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("ListUser", new { page = Model.PageNumber + 1 })">&raquo;</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+</div>
+
+<!-- Modal Edit Role -->
+<div class="modal" tabindex="-1" id="roleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa quyền người dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editRoleForm" method="post" action="@Url.Action("UpdateUserRole")">
+                    <input type="hidden" id="userId" name="userId" />
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Chọn quyền</label>
+                        <select id="role" name="role" class="form-select">
+                            <option value="Admin">Admin</option>
+                            <option value="employee">Nhân Viên</option>
+                            <option value="customer">Khách Hàng</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editIcons = document.querySelectorAll('.edit-role');
+        const roleModal = new bootstrap.Modal(document.getElementById('roleModal'));
+        const roleSelect = document.getElementById('role');
+        const userIdInput = document.getElementById('userId');
+
+        editIcons.forEach(icon => {
+            icon.addEventListener('click', function () {
+                const userId = this.getAttribute('data-user-id');
+                const roleText = this.previousElementSibling.getAttribute('data-role');
+
+                userIdInput.value = userId;
+                roleSelect.value = roleText.toLowerCase();
+                roleModal.show();
+            });
+        });
+    });
+</script>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\USER\source\repos\DoAnChuyenNganh\DoAnChuyenNganh\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2024-12-06T05:45:25.1234745Z||;True|2024-12-06T12:19:18.3761759+07:00||;True|2024-12-03T19:55:02.0824519+07:00||;True|2024-10-14T20:56:56.1303382+07:00||;True|2024-10-08T09:05:38.9052006+07:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

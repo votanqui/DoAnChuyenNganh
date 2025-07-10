@@ -1,0 +1,207 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.Sizes>
+@{
+    ViewData["Title"] = "Danh Sách Kích Thước";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@if (TempData["SuccessMessageSize"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessageSize"]
+    </div>
+}
+<div class="container mt-5">
+    <h2 class="text-center">DANH SÁCH KÍCH THƯỚC</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Kích Thước</th>
+                            <th scope="col">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#addSizeModal">
+                                    <i class="fas fa-plus"></i> Thêm mới
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var size in Model)
+                        {
+                            <tr id="size-row-@size.SizeID">
+                                <td>@size.SizeID</td>
+                                <td>@size.Size</td>
+                                <td>
+                                    <button class="btn btn-outline-primary edit-btn" data-id="@size.SizeID" data-size="@size.Size">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+
+                                    <a href="@Url.Action("DeleteSize", new { id = size.SizeID })" class="btn btn-outline-danger delete-btn"
+                                       onclick="return confirm('Bạn có chắc chắn muốn xóa kích thước này không?');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>                             
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Size -->
+<div class="modal fade" id="addSizeModal" tabindex="-1" role="dialog" aria-labelledby="addSizeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSizeModalLabel">Thêm Kích Thước Mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addSizeForm">
+                    <div class="form-group">
+                        <label for="newSize">Kích Thước</label>
+                        <input type="text" class="form-control" id="newSize" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="addSizeBtn">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Edit -->
+<div class="modal fade" id="editSizeModal" tabindex="-1" role="dialog" aria-labelledby="editSizeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editSizeModalLabel">Chỉnh Sửa Kích Thước</h5>
+                <button type="button" class="close" id="editModalCloseIcon" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editSizeForm">
+                    <input type="hidden" id="sizeId">
+                    <div class="form-group">
+                        <label for="editSize">Kích Thước</label>
+                        <input type="text" class="form-control" id="editSize">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="editModalCloseBtn" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="saveSizeChangesBtn">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- jQuery and Bootstrap JS (for modals) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Handle edit button click
+        $('.edit-btn').click(function () {
+            var sizeId = $(this).data('id');
+            var sizeName = $(this).data('size');
+
+            // Set values in the modal
+            $('#sizeId').val(sizeId);
+            $('#editSize').val(sizeName);
+
+            // Show the modal
+            $('#editSizeModal').modal('show');
+        });
+        
+        $('#editModalCloseIcon').click(function () {
+            $('#editSizeModal').modal('hide'); // Hide the modal
+        });
+        
+        $('#editModalCloseBtn').click(function () {
+            $('#editSizeModal').modal('hide'); // Hide the modal
+        });
+
+        // Save changes in the modal for editing
+        $('#saveSizeChangesBtn').click(function () {
+            var sizeId = $('#sizeId').val();
+            var sizeName = $('#editSize').val();
+
+            // Send AJAX request to update size
+            $.ajax({
+                url: '/Admin/EditSize',
+                method: 'POST',
+                data: {
+                    SizeID: sizeId,
+                    Size: sizeName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Update the row in the table
+                        $('#size-row-' + sizeId).find('td').eq(1).text(sizeName);
+                        $('#editSizeModal').modal('hide');
+                        location.reload();
+                    } else {
+                        alert('Error updating size');
+                    }
+                },
+                error: function () {
+                    alert('Error updating size');
+                }
+            });
+        });
+        // Handle add size button click
+        $('#addSizeBtn').click(function () {
+            var newSizeName = $('#newSize').val();
+
+            // Send AJAX request to add new size
+            $.ajax({
+                url: '/Admin/AddSize',
+                method: 'POST',
+                data: {
+                    Size: newSizeName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Add new row to the table
+                        var newRow = `<tr id="size-row-${response.newSizeID}">
+                                    <td>${response.newSizeID}</td>
+                                    <td>${newSizeName}</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary edit-btn" data-id="${response.newSizeID}" data-size="${newSizeName}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger delete-btn" data-id="${response.newSizeID}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>`;
+                        $('tbody').append(newRow);
+                        $('#newSize').val(''); // Clear the input
+                        $('#addSizeModal').modal('hide'); // Hide the modal
+                        location.reload();
+                    } else {
+                        alert('Error adding size');
+                    }
+                },
+                error: function () {
+                    alert('Error adding size');
+                }
+            });
+        });
+    });
+</script>

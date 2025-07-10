@@ -1,0 +1,208 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.Colors>
+@{
+    ViewData["Title"] = "Danh Sách Màu";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@if (TempData["SuccessMessageColor"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessageColor"]
+    </div>
+}
+<div class="container mt-5">
+    <h2 class="text-center">DANH SÁCH MÀU</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#addColorModal">
+                                    <i class="fas fa-plus"></i> Thêm mới
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var color in Model)
+                        {
+                            <tr id="color-row-@color.ColorID">
+                                <td>@color.ColorID</td>
+                                <td>@color.Color</td>
+                                <td>
+                                    <button class="btn btn-outline-primary edit-btn" data-id="@color.ColorID" data-color="@color.Color">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="@Url.Action("DeleteColor", new { id = color.ColorID })" class="btn btn-outline-danger delete-btn"
+                                       onclick="return confirm('Bạn có chắc chắn muốn xóa kích thước này không?');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Color -->
+<div class="modal fade" id="addColorModal" tabindex="-1" role="dialog" aria-labelledby="addColorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addColorModalLabel">Thêm Màu Mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addColorForm">
+                    <div class="form-group">
+                        <label for="newColor">Tên Màu</label>
+                        <input type="text" class="form-control" id="newColor" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="addColorBtn">Lưu màu mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Edit -->
+<div class="modal fade" id="editColorModal" tabindex="-1" role="dialog" aria-labelledby="editColorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editColorModalLabel">Chỉnh Sửa Màu</h5>
+                <button type="button" class="close" id="editModalCloseIcon" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editColorForm">
+                    <input type="hidden" id="colorId">
+                    <div class="form-group">
+                        <label for="editColor">Tên Màu</label>
+                        <input type="text" class="form-control" id="editColor">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="editModalCloseBtn" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="saveChangesBtn">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- jQuery and Bootstrap JS (for modals) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Handle edit button click
+        $('.edit-btn').click(function () {
+            var colorId = $(this).data('id');
+            var colorName = $(this).data('color');
+
+            // Set values in the modal
+            $('#colorId').val(colorId);
+            $('#editColor').val(colorName);
+
+            // Show the modal
+            $('#editColorModal').modal('show');
+        });
+        $('#editModalCloseIcon').click(function () {
+            $('#editColorModal').modal('hide'); // Hide the modal
+        });
+        $('#editModalCloseBtn').click(function () {
+            $('#editColorModal').modal('hide'); // Hide the modal
+        });
+        // Save changes in the modal for editing
+        $('#saveChangesBtn').click(function () {
+            var colorId = $('#colorId').val();
+            var colorName = $('#editColor').val();
+
+            // Send AJAX request to update color
+            $.ajax({
+                url: '/Admin/EditColor',
+                method: 'POST',
+                data: {
+                    ColorID: colorId,
+                    Color: colorName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Update the row in the table
+                        $('#color-row-' + colorId).find('td').eq(1).text(colorName);
+                        $('#editColorModal').modal('hide');
+                        location.reload();
+                    } else {
+                        alert('Error updating color');
+                    }
+                },
+                error: function () {
+                    alert('Error updating color');
+                }
+            });
+        });
+
+        // Handle delete button click
+      
+
+        // Handle add color button click
+        $('#addColorBtn').click(function () {
+            var newColorName = $('#newColor').val();
+
+            // Send AJAX request to add new color
+            $.ajax({
+                url: '/Admin/AddColor',
+                method: 'POST',
+                data: {
+                    Color: newColorName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Add new row to the table
+                        var newRow = `<tr id="color-row-${response.newColorID}">
+                                    <td>${response.newColorID}</td>
+                                    <td>${newColorName}</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary edit-btn" data-id="${response.newColorID}" data-color="${newColorName}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger delete-btn" data-id="${response.newColorID}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>`;
+                        $('tbody').append(newRow);
+                        $('#newColor').val(''); // Clear the input
+                        $('#addColorModal').modal('hide'); // Hide the modal
+                        location.reload();
+                    } else {
+                        alert('Error adding color');
+                    }
+                },
+                error: function () {
+                    alert('Error adding color');
+                }
+            });
+        });
+    });
+</script>

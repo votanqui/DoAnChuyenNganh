@@ -1,0 +1,164 @@
+﻿@model DoAnChuyenNganh.Models.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">THÊM TÀI KHOẢN MỚI</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <!-- Thông tin sản phẩm -->
+                    <div class="form-group row mb-3">
+                        <label asp-for="Name" class="col-sm-3 col-form-label">Tên tài khoản</label>
+                        <div class="col-sm-9">
+                            <input asp-for="Name" class="form-control" placeholder="Nhập tên tài khoản" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="Description" class="col-sm-3 col-form-label">Mô tả</label>
+                        <div class="col-sm-9">
+                            <textarea asp-for="Description" class="form-control" placeholder="Nhập mô tả"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="Price" class="col-sm-3 col-form-label">Giá</label>
+                        <div class="col-sm-9">
+                            <input asp-for="Price" class="form-control" placeholder="Nhập giá" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="CategoryID" class="col-sm-3 col-form-label">Danh mục</label>
+                        <div class="col-sm-9">
+                            <select asp-for="CategoryID" class="form-control">
+                                <option value="">Chọn danh mục</option>
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <option value="@category.CategoryID">@category.CategoryName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="CategoryID" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="BrandID" class="col-sm-3 col-form-label">Thương hiệu</label>
+                        <div class="col-sm-9">
+                            <select asp-for="BrandID" class="form-control">
+                                <option value="">Chọn thương hiệu</option>
+                                @foreach (var brand in ViewBag.Brands)
+                                {
+                                    <option value="@brand.BrandID">@brand.BrandName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="BrandID" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                     <div class="form-group row mb-3">
+                        <label asp-for="Status" class="col-sm-3 col-form-label">Trạng thái</label>
+                        <div class="col-sm-9">
+                            <select asp-for="Status" class="form-control">
+                                <option value="Ghim">Ghim</option>
+                                <option value="Ẩn">Ẩn</option>
+                                <option value="Hiện">Hiện</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label asp-for="SalePrice" class="col-sm-3 col-form-label">Giá khuyến mãi</label>
+                        <div class="col-sm-9">
+                            <input asp-for="SalePrice" class="form-control" placeholder="Nhập giá khuyến mãi" />
+                            <span asp-validation-for="SalePrice" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center mb-3">
+                        <input type="submit" value="Tạo mới" class="btn btn-primary btn-block" />
+                    </div>
+
+                    <div class="text-center">
+                        <a asp-action="Index" class="btn btn-danger btn-block">Quay lại danh sách</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Cột chứa ảnh -->
+        <div class="col-md-6">
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Ảnh sản phẩm</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Thêm trường input cho hình ảnh với ảnh xem trước -->
+                    <div class="form-group row">
+                        <label asp-for="Image1" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Image1" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview1')" />
+                            <span asp-validation-for="Image1" class="text-danger"></span>
+                            <img id="imagePreview1" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Image2" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Image2" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview2')" />
+                            <span asp-validation-for="Image2" class="text-danger"></span>
+                            <img id="imagePreview2" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Image3" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Image3" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview3')" />
+                            <span asp-validation-for="Image3" class="text-danger"></span>
+                            <img id="imagePreview3" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        function previewImage(event, previewId) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById(previewId);
+                output.src = reader.result;
+                output.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+}

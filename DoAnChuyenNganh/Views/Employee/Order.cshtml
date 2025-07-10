@@ -1,0 +1,235 @@
+﻿@model IPagedList<DoAnChuyenNganh.ViewModel.OrderAdminViewModel>
+@using PagedList;
+@{
+    ViewData["Title"] = "Order List";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    .custom-modal-size {
+        max-width: 95%;
+        width: 1200px;
+    }
+
+    .address-column {
+        max-width: 200px; /* Thay đổi giá trị này để điều chỉnh chiều rộng */
+        word-wrap: break-word; /* Tự động xuống dòng khi quá chiều rộng */
+        overflow-wrap: break-word; /* Tương thích tốt hơn với các trình duyệt */
+    }
+
+    .suggestion-item {
+        cursor: pointer;
+    }
+
+        .suggestion-item:hover {
+            background-color: #f1f1f1; /* Change background on hover */
+        }
+
+</style>
+<div class="container">
+    <h2 class="text-center">DANH SÁCH ĐƠN HÀNG</h2>
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 col-12 mb-2">
+                    <form method="post" action="@Url.Action("SearchOrder", "Admin")" id="searchOrderForm">
+                        <div class="input-group">
+                            <input id="searchKeyword" class="form-control" type="search" name="searchKeyword" placeholder="Nhập tên khách hàng" aria-label="Search" onkeyup="fetchSuggestions()">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul id="suggestions" class="list-group" style="display:none;"></ul>
+                </div>
+
+
+
+                <!-- Dropdown trạng thái đơn hàng -->
+                <div class="col-md-4 col-12 mb-2">
+                    <form action="/Admin/SearchByOrderStatus" method="get">
+                        <div class="input-group">
+                            <select class="custom-select" name="status" id="orderStatusSelect">
+                                <option selected>Chọn trạng thái</option>
+                                <option value="Đang xử lý">Đang xử lý</option>
+                                <option value="Đang giao hàng">Đang giao hàng</option>
+                                <option value="Đã giao">Đã giao</option>
+                                <option value="Đã hủy">Đã hủy</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (TempData["MessageOrder"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @TempData["MessageOrder"]
+        </div>
+    }
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Ngày Đặt</th>
+                            <th>Tổng Tiền</th>
+                            <th>Tiền Ship</th>
+                            <th>Thanh Toán</th>
+                            <th>Địa Chỉ</th>
+                            <th>Trạng Thái</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var orderViewModel in Model)
+                        {
+                            <tr>
+                                <td>@orderViewModel.Order.OrderID</td>
+                                <td>@orderViewModel.UserFullName</td>
+                                <td>@orderViewModel.Order.OrderDate.ToString("dd/MM/yyyy")</td>
+                                <td>@String.Format("{0:N0}", orderViewModel.Order.TotalAmount) VND</td>
+                                <td>@String.Format("{0:N0}", orderViewModel.Order.PriceShip) VND</td>
+                                <td>@orderViewModel.Order.PaymentMethod</td>
+                                <td class="address-column">@orderViewModel.Order.ShippingAddress</td> <!-- Áp dụng lớp cho cột địa chỉ -->
+                                <td>@orderViewModel.Order.Status</td>
+                                <td>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#orderDetailsModal_@orderViewModel.Order.OrderID">
+                                        Chi tiết
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Pagination -->
+    <div class="text-center mt-2">
+        @{
+            var totalPages = Model.PageCount;
+            var currentPage = Model.PageNumber;
+        }
+
+        @for (var i = 1; i <= totalPages; i++)
+        {
+            if (i == currentPage)
+            {
+                <span class="btn btn-secondary disabled">@i</span>
+            }
+            else
+            {
+                <a class="btn btn-primary" href="@Url.Action("ListOrder", new { page = i })">@i</a>
+            }
+        }
+    </div>
+
+    <!-- Modal for order details -->
+    @foreach (var orderViewModel in Model)
+    {
+
+
+        <div class="modal fade" id="orderDetailsModal_@orderViewModel.Order.OrderID" tabindex="-1" role="dialog" aria-labelledby="orderDetailsLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg custom-modal-size" role="document">
+                <!-- Thêm cả modal-lg và lớp tùy chỉnh -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderDetailsLabel">Chi tiết đơn hàng @orderViewModel.Order.OrderID</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Màu Sắc</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Ảnh</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Họ Tên</th>
+                                    <th>SĐT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detail in orderViewModel.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>@detail.Name</td>
+                                        <td>@detail.SizeName</td>
+                                        <td>@detail.ColorName</td>
+                                        <td>@detail.Quantity</td>
+                                        <td>@String.Format("{0:N0}", detail.TotalPrice) VND</td>
+                                        <td>
+                                            <img src="@detail.Image1" alt="@detail.Name" style="width: 100px; height: auto;" />
+                                        </td>
+                                        <td>@String.Format("{0:N0}", detail.TotalPrice * detail.Quantity) VND</td>
+                                        <td>@detail.FullName</td>
+                                        <td>@detail.Phone</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function fetchSuggestions() {
+        const keyword = $('#searchKeyword').val();
+        if (keyword.length > 0) {
+            $.ajax({
+                url: '@Url.Action("GetOrderSearchSuggestions", "Admin")',
+                data: { keyword: keyword },
+                success: function (suggestions) {
+                    $('#suggestions').empty(); // Clear existing suggestions
+                    if (suggestions.length > 0) {
+                        suggestions.forEach(function (suggestion) {
+                            $('#suggestions').append(`<li class="list-group-item suggestion-item">${suggestion}</li>`);
+                        });
+                        $('#suggestions').show(); // Show suggestions
+                    } else {
+                        $('#suggestions').hide(); // Hide suggestions if none
+                    }
+                },
+                error: function () {
+                    console.error('Error fetching suggestions');
+                }
+            });
+        } else {
+            $('#suggestions').hide(); // Hide suggestions if input is empty
+        }
+    }
+
+    // Hide suggestions when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('#suggestions, #searchKeyword').length) {
+            $('#suggestions').hide();
+        }
+    });
+
+    // Populate the search input when a suggestion is clicked
+    $(document).on('click', '.suggestion-item', function () {
+        $('#searchKeyword').val($(this).text());
+        $('#suggestions').hide(); // Hide suggestions after selection
+    });
+</script>

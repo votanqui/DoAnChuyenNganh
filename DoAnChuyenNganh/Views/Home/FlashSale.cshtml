@@ -1,0 +1,168 @@
+﻿@model DoAnChuyenNganh.ViewModel.AllproductViewModel
+@{
+    ViewBag.Title = "Flash Sale";
+}
+
+<div class="container container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar for Filters -->
+        <div class="col-md-3">
+            <form method="post" action="@Url.Action("SearchProducts")">
+                <!-- Filter by Brand -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <strong>Thương Hiệu</strong>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var brand in Model.Brands)
+                        {
+                            <li class="list-group-item border-0 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="brand-@brand.BrandID" name="selectedBrand" value="@brand.BrandID" />
+                                    <label class="form-check-label" for="brand-@brand.BrandID">
+                                        @brand.BrandName
+                                    </label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <!-- Filter by Size -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <strong>Size</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach (var size in Model.Sizes)
+                            {
+                                <div class="col-6 mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="size-@size.SizeID" name="selectedSize" value="@size.SizeID" />
+                                        <label class="form-check-label" for="size-@size.SizeID">
+                                            @size.Size
+                                        </label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter by Color -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <strong>Màu Sắc</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach (var color in Model.Colors)
+                            {
+                                <div class="col-6 mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="color-@color.ColorID" name="selectedColor" value="@color.ColorID" />
+                                        <label class="form-check-label" for="color-@color.ColorID">
+                                            @color.Color
+                                        </label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Filter Button -->
+                <button class="btn btn-primary w-100 mt-3" type="submit">Lọc Sản Phẩm</button>
+            </form>
+        </div>
+
+        <!-- Product Listings -->
+        <div class="col-md-9">
+            <div class="row">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <!-- Hiển thị nhãn giảm giá -->
+                            @if (product.DiscountPercentage > 0)
+                            {
+                                <div class="position-absolute bg-danger text-white px-2 py-1" style="top: 10px; left: 10px; border-radius: 4px; font-size: 14px;">
+                                    SALE @product.DiscountPercentage %
+                                </div>
+                            }
+
+                            <a href="@Url.Action("Details", "Home", new { id = product.ProductID })" class="text-decoration-none">
+                                <img src="@product.Image1" class="card-img-top" alt="@product.Name" style="max-height: 250px; object-fit: cover;">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title text-center mt-2">@product.Name</h5>
+
+                                    <div class="text-center mb-2">
+                                        @if (product.SalePrice > 0)
+                                        {
+                                            <span class="text-muted text-decoration-line-through">@product.Price?.ToString("N0") VND</span>
+                                            <span class="text-danger fw-bold ms-2">@product.SalePrice?.ToString("N0") VND</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-dark">@product.Price?.ToString("N0") VND</span>
+                                        }
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="d-flex justify-content-between align-items-center px-3 pb-2">
+                                <button class="wishlist-btn bg-white border-0" data-product-id="@product.ProductID">
+                                    <i class="fas fa-heart @(Model.WishlistStatuses.ContainsKey(product.ProductID) && Model.WishlistStatuses[product.ProductID] ? "text-danger" : "text-muted")"></i>
+                                </button>
+
+                                <div class="rating d-flex align-items-center">
+                                    @if (product.AverageRating > 0)
+                                    {
+                                        <span class="text-dark fw-bold">@product.AverageRating.ToString("0")⭐</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Chưa có đánh giá</span>
+                                    }
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-start mt-4" style="gap: 10px;">
+            @if (Model.Products.PageCount > 0)
+            {
+                <a class="btn btn-primary" href="@Url.Action("FlashSale", new { page = 1 })">1</a>
+
+                if (Model.Products.PageCount > 3)
+                {
+                    var startPage = Math.Max(2, Model.Products.PageNumber - 1);
+                    var endPage = Math.Min(Model.Products.PageCount - 1, Model.Products.PageNumber + 1);
+
+                    for (var i = startPage; i <= endPage; i++)
+                    {
+                        if (i == Model.Products.PageNumber)
+                        {
+                            <span class="btn btn-secondary disabled">@i</span>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary" href="@Url.Action("FlashSale", new { page = i })">@i</a>
+                        }
+                    }
+                }
+
+                if (Model.Products.PageCount > 1)
+                {
+                    <a class="btn btn-primary" href="@Url.Action("FlashSale", new { page = Model.Products.PageCount })">@Model.Products.PageCount</a>
+                }
+            }
+        </div>
+    </div>
+</div>

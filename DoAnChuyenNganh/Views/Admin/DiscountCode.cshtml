@@ -1,0 +1,239 @@
+﻿@model IPagedList<DoAnChuyenNganh.Models.DiscountCode>
+@using PagedList;
+
+@{
+    ViewData["Title"] = "Danh sách mã giảm giá";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<div class="container">
+    <h2 class="text-center">DANH SÁCH MÃ GIẢM GIÁ</h2>
+    <button class="btn btn-primary my-3" data-toggle="modal" data-target="#addDiscountModal">Thêm mới</button>
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Mã giảm giá</th>
+                            <th>Giá trị giảm</th>
+                            <th>Loại giảm</th>
+                            <th>Ngày hết hạn</th>
+                            <th>Trạng thái</th>
+                            <th>Số lần sử dụng tối đa (Mỗi người)</th>
+                            <th>Tổng số lần sử dụng</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model == null || !Model.Any())
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center">Không có mã giảm giá nào để hiển thị.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var discount in Model)
+                            {
+                                <tr>
+                                    <td>@discount.DiscountCodeID</td>
+                                    <td>@discount.Code</td>
+                                    <td>
+                                        @discount.DiscountValue @if (discount.IsPercentage)
+                                        {
+                                            <span>%</span>
+                                        }
+                                    </td>
+                                    <td>@(discount.IsPercentage ? "Phần trăm" : "Số tiền")</td>
+                                    <td>@discount.ExpiryDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@(discount.IsUsed ? "Đã sử dụng" : "Chưa sử dụng")</td>
+                                    <td>@discount.MaxUsesPerUser</td>
+                                    <td>@discount.TotalUses</td>
+                                    <td>
+                                        <form asp-action="DeleteDiscount" asp-controller="Admin" method="post" class="d-inline">
+                                            <input type="hidden" name="discountId" value="@discount.DiscountCodeID" />
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa mã này?')">Xóa</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-2">
+        @if (Model?.PageCount > 1)
+        {
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                    @{
+                        var totalPages = Model.PageCount;
+                        var currentPage = Model.PageNumber;
+
+                        // Nút "Trang trước"
+                        if (currentPage > 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("DiscountCode", new { page = currentPage - 1 })" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item disabled">
+                                <span class="page-link">&laquo;</span>
+                            </li>
+                        }
+
+                        // Hiển thị trang đầu tiên
+                        if (currentPage > 3)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("DiscountCode", new { page = 1 })">1</a>
+                            </li>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                        }
+
+                        // Hiển thị các trang xung quanh trang hiện tại
+                        var startPage = Math.Max(1, currentPage - 2);
+                        var endPage = Math.Min(totalPages, currentPage + 2);
+
+                        for (var i = startPage; i <= endPage; i++)
+                        {
+                            if (i == currentPage)
+                            {
+                                <li class="page-item active">
+                                    <span class="page-link">@i</span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("DiscountCode", new { page = i })">@i</a>
+                                </li>
+                            }
+                        }
+
+                        // Hiển thị trang cuối cùng
+                        if (currentPage < totalPages - 2)
+                        {
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("DiscountCode", new { page = totalPages })">@totalPages</a>
+                            </li>
+                        }
+
+                        // Nút "Trang sau"
+                        if (currentPage < totalPages)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("DiscountCode", new { page = currentPage + 1 })" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item disabled">
+                                <span class="page-link">&raquo;</span>
+                            </li>
+                        }
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+</div>
+
+<!-- Modal for Adding Discount -->
+<div class="modal fade" id="addDiscountModal" tabindex="-1" role="dialog" aria-labelledby="addDiscountLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm modal-md modal-lg" role="document">
+        <div class="modal-content rounded shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDiscountLabel">Thêm Mã Giảm Giá</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="CreateDiscount" asp-controller="Admin" method="post">
+                    <div class="form-group">
+                        <label class="font-weight-bold">Mã Giảm Giá</label>
+                        <input type="text" class="form-control" name="Code" placeholder="Nhập mã giảm giá" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Giá Trị Giảm</label>
+                        <input type="number" class="form-control" name="DiscountValue" placeholder="Nhập giá trị giảm" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Loại Giảm Giá</label>
+                        <select class="form-control" name="IsPercentage">
+                            <option value="true">Phần trăm (%)</option>
+                            <option value="false">Số tiền</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Ngày Hết Hạn</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="expiryDate" placeholder="Chọn ngày" name="ExpiryDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Số Lượng Sử Dụng Tối Đa (Mỗi Người)</label>
+                        <input type="number" class="form-control" name="MaxUsesPerUser" placeholder="Nhập số lần sử dụng tối đa" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Tổng Số Lần Sử Dụng</label>
+                        <input type="number" class="form-control" name="TotalUses" placeholder="Nhập tổng số lần sử dụng" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Tạo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery and Bootstrap JS (for modals) -->
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Flatpickr CSS & JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!-- Flatpickr Initialization -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#expiryDate", {
+            dateFormat: "Y-m-d",       // Set date format to year-month-day
+            minDate: "today",          // Restrict past dates
+            disableMobile: "true",     // Always use Flatpickr on all devices
+            position: "auto center"    // Automatically adjust position for small screens
+        });
+    });
+</script>

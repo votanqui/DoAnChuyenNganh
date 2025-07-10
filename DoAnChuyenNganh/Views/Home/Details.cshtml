@@ -1,0 +1,274 @@
+﻿@model DoAnChuyenNganh.ViewModel.ProductDetailViewModel
+
+@{
+    ViewData["Title"] = Model.Product.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Chỉ ra bố cục chính của trang web
+}
+
+<style>
+    /* Tuỳ chỉnh kích thước hình chính */
+    .product-main-image img {
+        width: 100%;
+        max-height: 600px; /* Tăng chiều cao hình chính */
+        object-fit: cover;
+    }
+
+    /* Thumbnail */
+    .img-thumbnail {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+
+    /* Rút ngắn chiều dài dropdown size */
+    #sizeDropdown {
+        max-width: 150px; /* Rút ngắn chiều dài của dropdown chọn size */
+    }
+
+    /* Phong cách cho phần đánh giá */
+    .review-item {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Phần Hình Ảnh Sản Phẩm -->
+        <div class="col-md-6">
+            <div class="card">
+                <img src="@Model.Product.Image1" class="product-main-image" alt="Sản phẩm" id="mainImage">
+            </div>
+
+            <!-- Ảnh thumbnail dưới dạng các nút nhỏ -->
+            <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-outline-secondary mx-1" onclick="changeImage('@Model.Product.Image1')">
+                    <img src="@Model.Product.Image1" alt="Thumbnail 1" class="img-thumbnail border-0">
+                </button>
+                <button class="btn btn-outline-secondary mx-1" onclick="changeImage('@Model.Product.Image2')">
+                    <img src="@Model.Product.Image2" alt="Thumbnail 2" class="img-thumbnail border-0">
+                </button>
+                <button class="btn btn-outline-secondary mx-1" onclick="changeImage('@Model.Product.Image3')">
+                    <img src="@Model.Product.Image3" alt="Thumbnail 3" class="img-thumbnail border-0">
+                </button>
+            </div>
+        </div>
+
+        <!-- Phần Thông Tin Sản Phẩm -->
+        <div class="col-md-6">
+            <h2 class="text-primary">@Model.Product.Name</h2>
+            <p class="text-muted">Thương hiệu: @Model.BrandName</p>
+            <div class="aa">
+                @if (Model.Product.SalePrice > 0)
+                {
+                    <span class="text-muted text-decoration-line-through">
+                        @string.Format("{0:N0}", Model.Product.Price) VND
+                    </span>
+                    <span class="text-danger fw-bold ms-2" >
+                        @string.Format("{0:N0}", Model.Product.SalePrice) VND
+                    </span>
+                }
+                else
+                {
+                    <span class="text-dark">
+                        @string.Format("{0:N0}", Model.Product.Price) VND
+                    </span>
+                }
+
+            </div>
+            <hr />
+            <form id="addToCartForm">
+                <!-- Chọn Size -->
+                <div class="form-group mt-3">
+                    <label for="sizeDropdown">Size:</label>
+                    <select class="form-control" id="sizeDropdown" name="sizeName">
+                        <option selected disabled>Chọn size</option>
+                        @foreach (var variantInfo in Model.ColorSizeVariants.Select(x => x.SizeName).Distinct())
+                        {
+                            <option value="@variantInfo">@variantInfo</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- Chọn Màu -->
+                <div class="form-group mt-3">
+                    <label>Màu sắc:</label>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        @foreach (var variantInfo in Model.ColorSizeVariants.Select(x => x.ColorName).Distinct())
+                        {
+                            <label class="btn border-0">
+                                <input class="form-check-input" type="radio" name="colorName" value="@variantInfo"> @variantInfo
+                            </label>
+                        }
+                    </div>
+                </div>
+
+                <!-- Số Lượng -->
+                <div class="form-group d-flex align-items-center mt-3">
+                    <label for="quantityInput" class="me-2">Số lượng:</label>
+                    <input type="number" class="form-control" id="quantityInput" name="quantity" value="1" min="1" style="width: 80px;">
+                    <button type="button" class="btn btn-success ms-3" id="addToCartButton" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mô tả Sản Phẩm và Chi Tiết -->
+    <div class="mt-5">
+        <ul class="nav nav-tabs" id="productTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab">Mô tả</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="productTabContent">
+            <!-- Mô tả sản phẩm -->
+            <div class="tab-pane fade show active p-3" id="description" role="tabpanel">
+                <p>@Model.Product.Description</p>
+            </div>
+        </div>
+    </div>
+    <!-- Form thêm đánh giá -->
+    <h6 class="mt-4">Thêm đánh giá của bạn:</h6>
+    <form asp-action="AddReview" method="post">
+        <input type="hidden" name="productId" value="@Model.Product.ProductID" />
+        <div class="form-group">
+            <label for="comment">Bình luận:</label>
+            <textarea class="form-control" name="comment" id="comment" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Đánh giá:</label>
+            <div>
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <input type="radio" name="rating" value="@i" id="rating-@i" required>
+                    <label for="rating-@i">@i <span class="fa fa-star"></span></label>
+                }
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+    </form>
+    <!-- Đánh giá sản phẩm nằm riêng biệt -->
+    <div class="mt-5">
+        <h5>Đánh giá sản phẩm:</h5>
+        @if (Model.Reviews.Any())
+        {
+            <ul class="list-group">
+                @foreach (var review in Model.Reviews)
+                {
+                    <li class="list-group-item review-item  border-0">
+                        <strong>@review.FullName</strong>
+                         @review.Comment <br />
+                        <small class="text-muted">@review.CreatedAt.ToString("dd/MM/yyyy")</small>
+                        <div>
+                            <!-- Hiển thị số sao đánh giá -->
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= review.Rating)
+                                {
+                                    <i class="fas fa-star text-warning"></i> <!-- Đánh dấu sao đã chọn -->
+                                }
+                                else
+                                {
+                                    <i class="far fa-star text-muted"></i> <!-- Đánh dấu sao chưa chọn -->
+                                }
+                            }
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+        }
+        <h3>Sản phẩm tương tự</h3>
+        @if (Model.SimilarProducts != null && Model.SimilarProducts.Any())
+        {
+            <div class="row">
+                @for (int i = 0; i < Model.SimilarProducts.Count; i++)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4 product-item" data-index="@i">
+                        <div class="card h-100">
+                            <a href="@Url.Action("Details", "Home", new { id = Model.SimilarProducts[i].ProductID })" class="text-decoration-none">
+                                <img src="@Model.SimilarProducts[i].Image1" class="card-img-top" alt="@Model.SimilarProducts[i].Name">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">@Model.SimilarProducts[i].Name</h5>
+
+                                    <!-- Display Price and SalePrice in the same row -->
+                                    <div class="text-center">
+                                        @if (Model.SimilarProducts[i].SalePrice > 0)
+                                        {
+                                            <span class="text-muted text-decoration-line-through">
+                                                @String.Format("{0:N0} VND", Model.SimilarProducts[i].Price)
+                                            </span>
+                                            <span class="text-danger fw-bold ms-2" style="font-size: larger;">
+                                                @String.Format("{0:N0} VND", Model.SimilarProducts[i].SalePrice)
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-dark">
+                                                @String.Format("{0:N0} VND", Model.SimilarProducts[i].Price)
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <button class="btn btn-sm btn-outline-primary">Xem Chi Tiết</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>Không có sản phẩm tương tự.</p>
+        }
+
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#addToCartButton').click(function () {
+            var productID = @Model.Product.ProductID; // Lấy ProductID từ model
+            var sizeName = $('#sizeDropdown').val();
+            var colorName = $('input[name="colorName"]:checked').val();
+            var quantity = $('#quantityInput').val();
+
+            var data = {
+                ProductID: productID,
+                SizeName: sizeName,
+                ColorName: colorName,
+                Quantity: quantity
+            };
+
+            $.ajax({
+                url: '@Url.Action("AddToCart", "Home")', // Thay YourControllerName bằng tên controller của bạn
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra trong quá trình thêm sản phẩm vào giỏ hàng.');
+                }
+            });
+        });
+    });
+    function changeImage(imageUrl) {
+        document.getElementById('mainImage').src = imageUrl;
+    }
+
+</script>

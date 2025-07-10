@@ -1,0 +1,1004 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\listsize.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\listsize.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\cart\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\cart\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\cart\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\cart\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\discountcode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\discountcode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\services\\vnpayservice.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\services\\vnpayservice.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\services\\ivnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\services\\ivnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\home\\listpurchasedproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\home\\listpurchasedproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\cart\\errororder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\cart\\errororder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\home\\flashsale.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\home\\flashsale.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\viewmodel\\allproductviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\viewmodel\\allproductviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\flashsale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\flashsale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\viewmodel\\flashsalelistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\viewmodel\\flashsalelistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\flashsalelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\flashsalelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\listorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\listorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\createflashsale.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\createflashsale.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\viewmodel\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\viewmodel\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\productdropdownitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\productdropdownitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\sizes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\sizes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\shared\\layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\shared\\layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\managehomecontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\managehomecontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\listuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\listuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\viewmodel\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\viewmodel\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\homecontent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\homecontent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\contactinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\contactinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\managecontactinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\managecontactinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\discountcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\discountcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\gmail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\gmail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\wwwroot\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\wwwroot\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\shared\\layoutemployee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\shared\\layoutemployee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\home\\products.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\home\\products.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\views\\admin\\listcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\views\\admin\\listcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\colors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\colors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\viewmodel\\productadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\viewmodel\\productadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|c:\\users\\votan\\source\\repos\\doanchuyennganh\\doanchuyennganh\\viewmodel\\productdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713852D4-7B6C-4B76-B291-A2D42F2E3AB6}|DoAnChuyenNganh\\DoAnChuyenNganh.csproj|solutionrelative:doanchuyennganh\\viewmodel\\productdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Account\\Profile.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Account\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Account\\Profile.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Account\\Profile.cshtml",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAAAEoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-06T14:25:54.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FlashSaleListViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\FlashSaleListViewModel.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\ViewModel\\FlashSaleListViewModel.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\FlashSaleListViewModel.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\ViewModel\\FlashSaleListViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T08:13:22.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AQIAABEBAAAAAAAAAAAAABUBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-13T08:02:06.354Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ProductDropdownItem.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\ProductDropdownItem.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\ProductDropdownItem.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\ProductDropdownItem.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\ProductDropdownItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T07:45:32.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\appsettings.json",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\appsettings.json",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\appsettings.json",
+              "RelativeToolTip": "DoAnChuyenNganh\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-01T13:35:50.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "VnPayLibrary.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\VnPayLibrary.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\VnPayLibrary.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\VnPayLibrary.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\VnPayLibrary.cs",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:38:19.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:19:56.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\CartController.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Controllers\\CartController.cs",
+              "ViewState": "AgIAACUCAAAAAAAAAAAAAEACAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T03:14:46.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ListSize.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListSize.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\ListSize.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListSize.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\ListSize.cshtml",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAuwKQAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T11:12:52.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAEICAAAAAAAAAAAcwGICAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T15:30:12.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "FlashSaleList.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\FlashSaleList.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\FlashSaleList.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\FlashSaleList.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\FlashSaleList.cshtml",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAAI8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-13T08:15:47.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Cart\\Cart.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Cart\\Cart.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Cart\\Cart.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Cart\\Cart.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-05T16:25:10.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Cart\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Cart\\Checkout.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Cart\\Checkout.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Cart\\Checkout.cshtml",
+              "ViewState": "AgIAAG0BAAAAAAAAAAAAAI4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-20T15:42:17.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAEUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-05T16:53:44.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-05T16:25:28.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T05:15:16.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FlashSale.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\FlashSale.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Home\\FlashSale.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\FlashSale.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Home\\FlashSale.cshtml",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAAAIEAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-13T08:51:35.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ErrorOrder.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Cart\\ErrorOrder.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Cart\\ErrorOrder.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Cart\\ErrorOrder.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Cart\\ErrorOrder.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-13T16:19:25.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAgwOcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T14:29:18.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ListPurchasedProducts.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\ListPurchasedProducts.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Home\\ListPurchasedProducts.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\ListPurchasedProducts.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Home\\ListPurchasedProducts.cshtml",
+              "ViewState": "AQIAAEIAAACAZmZmZmbwv30AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-13T16:20:54.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "VnPayService.cs.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Services\\VnPayService.cs.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Services\\VnPayService.cs.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Services\\VnPayService.cs.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Services\\VnPayService.cs.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAApwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:38:41.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IVnPayService.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Services\\IVnPayService.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Services\\IVnPayService.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Services\\IVnPayService.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Services\\IVnPayService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:38:43.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Program.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Program.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Program.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T11:04:40.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ProductVariant.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\ProductVariant.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\ProductVariant.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\ProductVariant.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\ProductVariant.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T03:57:12.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Sizes.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Sizes.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Sizes.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Sizes.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Sizes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T03:54:13.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "FlashSaleViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\FlashSaleViewModel.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\ViewModel\\FlashSaleViewModel.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\FlashSaleViewModel.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\ViewModel\\FlashSaleViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T03:13:30.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CreateFlashSale.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\CreateFlashSale.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\CreateFlashSale.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\CreateFlashSale.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\CreateFlashSale.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAADEAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-12T13:54:14.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FlashSale.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\FlashSale.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\FlashSale.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\FlashSale.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\FlashSale.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:36:59.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "DoAnChuyenNganh\\wwwroot\\css\\site.css",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAAAGQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-03T12:02:25.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Controllers\\EmployeeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:22:06.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ProductViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\ProductViewModel.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\ViewModel\\ProductViewModel.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\ProductViewModel.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\ViewModel\\ProductViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:20:13.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\Edit.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\Edit.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\Edit.cshtml",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAJYAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-03T10:12:11.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ManageHomeContent.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ManageHomeContent.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\ManageHomeContent.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ManageHomeContent.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\ManageHomeContent.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T14:12:03.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "HomeContent.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\HomeContent.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\HomeContent.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\HomeContent.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\HomeContent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T13:11:02.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "DiscountCode.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\DiscountCode.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\DiscountCode.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\DiscountCode.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\DiscountCode.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:25:04.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "District.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\District.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\District.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\District.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\District.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:25:02.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Gmail.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Gmail.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Gmail.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Gmail.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Gmail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:25:01.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Brand.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Brand.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Brand.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Brand.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Brand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:24:58.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\CartItem.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\CartItem.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\CartItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:24:55.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ManageContactInfo.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ManageContactInfo.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\ManageContactInfo.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ManageContactInfo.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\ManageContactInfo.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T12:20:39.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAswCcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:11:32.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "ContactInfo.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\ContactInfo.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\ContactInfo.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\ContactInfo.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\ContactInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:08:55.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "LayoutEmployee.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\LayoutEmployee.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Shared\\LayoutEmployee.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\LayoutEmployee.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Shared\\LayoutEmployee.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T11:03:09.857Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "StyleSheet.css",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\wwwroot\\css\\StyleSheet.css",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\wwwroot\\css\\StyleSheet.css",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\wwwroot\\css\\StyleSheet.css",
+              "RelativeToolTip": "DoAnChuyenNganh\\wwwroot\\css\\StyleSheet.css",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-01T10:22:35.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Products.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\Products.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Home\\Products.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\Products.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Home\\Products.cshtml",
+              "ViewState": "AQIAAI0AAAAAAAAAAADwv7sAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:57:01.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ListUser.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListUser.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\ListUser.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListUser.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\ListUser.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:52:52.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ListOrder.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListOrder.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\ListOrder.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListOrder.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\ListOrder.cshtml",
+              "ViewState": "AQIAAAEBAAAAAAAAAAAAAA4BAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:52:48.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "LayoutAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Shared\\LayoutAdmin.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Shared\\LayoutAdmin.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Shared\\LayoutAdmin.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:27:36.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DiscountCode.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\DiscountCode.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\DiscountCode.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\DiscountCode.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\DiscountCode.cshtml",
+              "ViewState": "AQIAALoAAAAAAAAAAAAAAMgAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T08:13:17.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Colors.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Colors.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Colors.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Colors.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Colors.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T15:43:31.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "ProductAdminViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\ProductAdminViewModel.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\ViewModel\\ProductAdminViewModel.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\ProductAdminViewModel.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\ViewModel\\ProductAdminViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T15:40:36.532Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AllproductViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\AllproductViewModel.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\ViewModel\\AllproductViewModel.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\AllproductViewModel.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\ViewModel\\AllproductViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T15:06:03.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-28T06:11:52.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "ProductDetailViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\ProductDetailViewModel.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\ViewModel\\ProductDetailViewModel.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\ViewModel\\ProductDetailViewModel.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\ViewModel\\ProductDetailViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T05:37:09.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Product.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T07:49:02.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Category.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T07:48:16.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ListCategory.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListCategory.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\ListCategory.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\ListCategory.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\ListCategory.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T04:21:46.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\Create.cshtml",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Views\\Admin\\Create.cshtml",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Views\\Admin\\Create.cshtml",
+              "RelativeToolTip": "DoAnChuyenNganh\\Views\\Admin\\Create.cshtml",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAYwJcAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-23T02:51:36.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "DoAnChuyenNganh\\Models\\Review.cs",
+              "ToolTip": "C:\\Users\\votan\\source\\repos\\DoAnChuyenNganh\\DoAnChuyenNganh\\Models\\Review.cs",
+              "RelativeToolTip": "DoAnChuyenNganh\\Models\\Review.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T12:09:40.59Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 735,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{5a4e9529-b6a0-46b5-be4f-0f0b239bc0eb}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

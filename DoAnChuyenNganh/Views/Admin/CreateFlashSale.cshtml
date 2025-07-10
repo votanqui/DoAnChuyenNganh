@@ -1,0 +1,87 @@
+﻿@model DoAnChuyenNganh.ViewModel.FlashSaleViewModel
+
+@{
+    ViewData["Title"] = "Thêm Flash Sale";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["ModelStateErrors"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ModelStateErrors"]
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">THÊM FLASH SALE MỚI</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Validation Summary -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <form asp-action="CreateFlashSale" method="post">
+                    <div class="form-group row mb-3">
+                        <label asp-for="ProductId" class="col-sm-3 col-form-label">Sản phẩm</label>
+                        <div class="col-sm-9">
+                            <select asp-for="ProductId" class="form-control" asp-items="Model.Products">
+                                <option value="">Chọn sản phẩm</option>
+                            </select>
+                            <span asp-validation-for="ProductId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="Price" class="col-sm-3 col-form-label">Giá khuyến mãi</label>
+                        <div class="col-sm-9">
+                            <input asp-for="Price" class="form-control" placeholder="Nhập giá khuyến mãi" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="StartTime" class="col-sm-3 col-form-label">Thời gian bắt đầu</label>
+                        <div class="col-sm-9">
+                            <input asp-for="StartTime" type="datetime-local" class="form-control" min="2024-01-01T00:00" required />
+                            <span asp-validation-for="StartTime" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label asp-for="EndTime" class="col-sm-3 col-form-label">Thời gian kết thúc</label>
+                        <div class="col-sm-9">
+                            <input asp-for="EndTime" type="datetime-local" class="form-control" min="2024-01-01T00:00" required />
+                            <span asp-validation-for="EndTime" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center mb-3">
+                        <input type="submit" value="Tạo Flash Sale" class="btn btn-primary btn-block" />
+                    </div>
+
+                    <div class="text-center">
+                        <a asp-action="FlashSaleList" class="btn btn-danger btn-block">Quay lại danh sách</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+﻿@model DoAnChuyenNganh.Models.HomeContent
+
+@{
+    ViewData["Title"] = "Quản lý nội dung trang chủ";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <form asp-action="ManageHomeContent" enctype="multipart/form-data">
+        <div class="row">
+            <!-- Cột bên trái: Form -->
+            <div class="col-md-6">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Cập nhật nội dung trang chủ</h3>
+                    </div>
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group row mb-3">
+                            <label asp-for="Notification" class="col-sm-3 col-form-label">Thông báo</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Notification" class="form-control" required />
+                                <span asp-validation-for="Notification" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Thêm trường input cho hình ảnh với ảnh xem trước -->
+                        <div class="form-group row">
+                            <label asp-for="Image1" class="col-sm-3 col-form-label">Ảnh Chính</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image1" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview1')" />
+                                <span asp-validation-for="Image1" class="text-danger"></span>
+                                <img id="imagePreview1" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="Image2" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image2" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview2')" />
+                                <span asp-validation-for="Image2" class="text-danger"></span>
+                                <img id="imagePreview2" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="Image3" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image3" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview3')" />
+                                <span asp-validation-for="Image3" class="text-danger"></span>
+                                <img id="imagePreview3" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="Image4" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image4" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview4')" />
+                                <span asp-validation-for="Image4" class="text-danger"></span>
+                                <img id="imagePreview4" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="Image5" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image5" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview5')" />
+                                <span asp-validation-for="Image5" class="text-danger"></span>
+                                <img id="imagePreview5" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="Image6" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image6" type="file" class="form-control" accept="image/*" onchange="previewImage(event, 'imagePreview6')" />
+                                <span asp-validation-for="Image6" class="text-danger"></span>
+                                <img id="imagePreview6" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center mb-3">
+                            <button type="submit" class="btn btn-primary btn-block">Lưu thay đổi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cột bên phải: Hiển thị nội dung hiện tại -->
+            <div class="col-md-6">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Nội dung hiện tại</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Thông báo:</strong> @Model.Notification</p>
+
+                        <!-- Hiển thị ảnh với chiều rộng tối đa 200px -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Ảnh Chính:</strong></p>
+                                <img src="@Model.Image1" alt="Ảnh 1" class="img-fluid mb-3" style="max-width: 200px;" />
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Ảnh 2:</strong></p>
+                                <img src="@Model.Image2" alt="Ảnh 2" class="img-fluid mb-3" style="max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Ảnh 3:</strong></p>
+                                <img src="@Model.Image3" alt="Ảnh 3" class="img-fluid mb-3" style="max-width: 200px;" />
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Ảnh 4:</strong></p>
+                                <img src="@Model.Image4" alt="Ảnh 4" class="img-fluid mb-3" style="max-width: 200px;" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Ảnh 5:</strong></p>
+                                <img src="@Model.Image5" alt="Ảnh 5" class="img-fluid mb-3" style="max-width: 200px;" />
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Ảnh 6:</strong></p>
+                                <img src="@Model.Image6" alt="Ảnh 6" class="img-fluid mb-3" style="max-width: 200px;" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function previewImage(event, previewId) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const output = document.getElementById(previewId);
+            output.src = reader.result;
+            output.style.display = 'block'; // Hiển thị ảnh xem trước
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

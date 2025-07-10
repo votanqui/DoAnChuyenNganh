@@ -1,0 +1,208 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.Brand>
+@{
+    ViewData["Title"] = "Danh Sách Thương Hiệu";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@if (TempData["SuccessMessageBrand"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessageBrand"]
+    </div>
+}
+<div class="container mt-5">
+    <h2 class="text-center">DANH SÁCH THƯƠNG HIỆU</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên Thương Hiệu</th>
+                            <th scope="col">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#addBrandModal">
+                                    <i class="fas fa-plus"></i> Thêm mới
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var brand in Model)
+                        {
+                            <tr id="brand-row-@brand.BrandID">
+                                <td>@brand.BrandID</td>
+                                <td>@brand.BrandName</td>
+                                <td>
+                                    <button class="btn btn-outline-primary edit-btn" data-id="@brand.BrandID" data-brand="@brand.BrandName">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="@Url.Action("DeleteBrand", new { id = brand.BrandID })" class="btn btn-outline-danger delete-btn"
+                                       onclick="return confirm('Bạn có chắc chắn muốn xóa kích thước này không?');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Brand -->
+<div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="addBrandModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBrandModalLabel">Thêm Thương Hiệu Mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addBrandForm">
+                    <div class="form-group">
+                        <label for="newBrandName">Tên Thương Hiệu</label>
+                        <input type="text" class="form-control" id="newBrandName" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="addBrandBtn">Lưu thương hiệu mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Edit -->
+<div class="modal fade" id="editBrandModal" tabindex="-1" role="dialog" aria-labelledby="editBrandModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBrandModalLabel">Chỉnh Sửa Thương Hiệu</h5>
+                <button type="button" class="close" id="editModalCloseIcon" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editBrandForm">
+                    <input type="hidden" id="brandId">
+                    <div class="form-group">
+                        <label for="editBrandName">Tên Thương Hiệu</label>
+                        <input type="text" class="form-control" id="editBrandName">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="editModalCloseBtn" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="saveBrandChangesBtn">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- jQuery and Bootstrap JS (for modals) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Handle edit button click
+        $('.edit-btn').click(function () {
+            var brandId = $(this).data('id');
+            var brandName = $(this).data('brand');
+
+            // Set values in the modal
+            $('#brandId').val(brandId);
+            $('#editBrandName').val(brandName);
+
+            // Show the modal
+            $('#editBrandModal').modal('show');
+        });
+
+        $('#editModalCloseIcon').click(function () {
+            $('#editBrandModal').modal('hide'); // Hide the modal
+        });
+
+        $('#editModalCloseBtn').click(function () {
+            $('#editBrandModal').modal('hide'); // Hide the modal
+        });
+
+        // Save changes in the modal for editing
+        $('#saveBrandChangesBtn').click(function () {
+            var brandId = $('#brandId').val();
+            var brandName = $('#editBrandName').val();
+
+            // Send AJAX request to update brand
+            $.ajax({
+                url: '/Admin/EditBrand',
+                method: 'POST',
+                data: {
+                    BrandID: brandId,
+                    BrandName: brandName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Update the row in the table
+                        $('#brand-row-' + brandId).find('td').eq(1).text(brandName);
+                        $('#editBrandModal').modal('hide');
+                        location.reload();
+                    } else {
+                        alert('Error updating brand');
+                    }
+                },
+                error: function () {
+                    alert('Error updating brand');
+                }
+            });
+        });
+
+
+        // Handle add brand button click
+        $('#addBrandBtn').click(function () {
+            var newBrandName = $('#newBrandName').val();
+
+            // Send AJAX request to add new brand
+            $.ajax({
+                url: '/Admin/AddBrand',
+                method: 'POST',
+                data: {
+                    BrandName: newBrandName,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Add new row to the table
+                        var newRow = `<tr id="brand-row-${response.newBrandID}">
+                                    <td>${response.newBrandID}</td>
+                                    <td>${newBrandName}</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary edit-btn" data-id="${response.newBrandID}" data-brand="${newBrandName}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger delete-btn" data-id="${response.newBrandID}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>`;
+                        $('tbody').append(newRow);
+                        $('#newBrandName').val(''); // Clear the input
+                        $('#addBrandModal').modal('hide'); // Hide the modal
+                        location.reload();
+                    } else {
+                        alert('Error adding brand');
+                    }
+                },
+                error: function () {
+                    alert('Error adding brand');
+                }
+            });
+        });
+    });
+</script>

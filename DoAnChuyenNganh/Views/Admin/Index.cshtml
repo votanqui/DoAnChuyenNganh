@@ -1,0 +1,339 @@
+﻿@model IPagedList<DoAnChuyenNganh.ViewModel.ProductAdminViewModel>
+@using PagedList;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    .wrap-text {
+        max-width: 150px; /* Điều chỉnh theo nhu cầu */
+        word-wrap: break-word; /* Cho phép từ dài được ngắt và xuống dòng */
+        overflow: hidden; /* Ẩn văn bản tràn */
+        white-space: normal; /* Cho phép ngắt dòng bình thường */
+    }
+
+    #suggestions {
+        border: 1px solid #ddd;
+        background-color: white;
+    }
+
+    .suggestion-item:hover {
+        background-color: #f1f1f1; /* Highlight on hover */
+    }
+
+</style>
+<div class="container">
+    <h2 class="text-center">DANH SÁCH SẢN PHẨM</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- Tìm kiếm sản phẩm -->
+                <div class="col-md-4 col-12 mb-2">
+                    <form method="post" action="@Url.Action("SearchProduct", "Admin")" id="searchForm">
+                        <div class="input-group">
+                            <input id="searchKeyword" class="form-control" type="search" name="searchKeyword" placeholder="Nhập từ khóa tìm kiếm" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul id="suggestions" class="list-group" style="display:none;"></ul>
+                </div>
+
+                <!-- Dropdown trạng thái -->
+                <div class="col-md-4 col-12 mb-2">
+                    <form action="/Admin/SearchByStatus" method="get">
+                        <div class="input-group">
+                            <select class="custom-select" name="status" id="statusSelect">
+                                <option selected>Chọn trạng thái</option>
+                                <option value="Ghim">Ghim</option>
+                                <option value="Ẩn">Ẩn</option>
+                                <option value="Hiện">Hiện</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Nút thêm mới -->
+                <div class="col-md-4 col-12 mb-2 text-md-right text-center">
+                    <a href="/Admin/Create" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Thêm mới
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["MessageProduct"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @TempData["MessageProduct"]
+        </div>
+    }
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Brand</th>
+                            <th>Giá</th>
+                            <th>Giá Khuyến Mãi</th>
+                            <th>Hình ảnh</th>
+                            <th>Trạng Thái</th>
+                            <th>Biến thể</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var productViewModel in Model)
+                        {
+                            <tr>
+                                <td>@productViewModel.Product.ProductID</td>
+                                <td class="wrap-text">@productViewModel.Product.Name</td>
+                                <td>@productViewModel.BrandName</td>
+                                <td>@String.Format("{0:N0}", productViewModel.Product.Price) VND</td>
+                                <td>@String.Format("{0:N0}", productViewModel.Product.SalePrice) VND</td>
+                                <td>
+                                    <img src="@productViewModel.Product.Image1" width="100" alt="Hình sản phẩm" />
+                                </td>
+                                <td>@productViewModel.Product.Status</td>
+                                <td>
+                                    @productViewModel.ProductVariants.Count
+                                    <i class="fas fa-eye"
+                                       style="cursor:pointer;"
+                                       data-toggle="modal"
+                                       data-target="#modalVariants_@productViewModel.Product.ProductID"
+                                           title="Xem biến thể"></i>
+                                 
+                                    <button class="btn btn-outline-primary add-variant-btn" data-toggle="modal" data-target="#AddVariantModal_@productViewModel.Product.ProductID">
+                                        <i class="fas fa-plus"></i> 
+                                    </button>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@productViewModel.Product.ProductID" title="Chỉnh sửa">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form asp-action="Delete" asp-route-id="@productViewModel.Product.ProductID" method="post" style="display:inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (var productViewModel in Model)
+{
+    <div class="modal fade" id="AddVariantModal_@productViewModel.Product.ProductID" tabindex="-1" role="dialog" aria-labelledby="addColorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3">
+                <!-- Header -->
+                <div class="modal-header bg-primary text-white rounded-top">
+                    <h5 class="modal-title" id="addColorModalLabel">Thêm Màu Mới</h5>
+                    <button type="button" class="btn-close text-white" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <form asp-action="AddVariant" method="post">
+                        <input type="hidden" name="productId" value="@productViewModel.Product.ProductID" />
+
+                        <!-- Màu sắc -->
+                        <div class="form-group mb-4">
+                            <label for="ColorID" class="form-label">Màu sắc</label>
+                            <select name="ColorID" class="form-control rounded-pill" required>
+                                <option value="">Chọn màu sắc</option>
+                                @foreach (var color in ViewBag.Colors)
+                                {
+                                    <option value="@color.ColorID">@color.Color</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Kích thước -->
+                        <div class="form-group mb-4">
+                            <label for="SizeID" class="form-label">Kích thước</label>
+                            <select name="SizeID" class="form-control rounded-pill" required>
+                                <option value="">Chọn kích thước</option>
+                                @foreach (var size in ViewBag.Sizes)
+                                {
+                                    <option value="@size.SizeID">@size.Size</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Số lượng tồn kho -->
+                        <div class="form-group mb-4">
+                            <label for="Stock" class="form-label">Số lượng tồn kho</label>
+                            <input name="Stock" type="number" class="form-control rounded-pill" required />
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-success w-100 rounded-pill">Thêm Biến Thể</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="text-center mt-2">
+    @{
+        var totalPages = Model.PageCount;
+        var currentPage = Model.PageNumber;
+        var baseUrl = Url.Action("Index", new { });
+    }
+
+    @for (var i = 1; i <= totalPages; i++)
+    {
+        if (i == currentPage)
+        {
+            <span class="btn btn-secondary disabled">@i</span>
+        }
+        else
+        {
+            <a class="btn btn-primary" href="@Url.Action("Index", new { page = i })">@i</a>
+        }
+    }
+
+
+</div>
+<!-- Đặt các modal ở đây, ngoài vòng lặp foreach -->
+@foreach (var productViewModel in Model)
+{
+    <div class="modal fade" id="modalVariants_@productViewModel.Product.ProductID" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded-3">
+                <!-- Modal Header -->
+                <div class="modal-header bg-primary text-white rounded-top">
+                    <h5 class="modal-title" id="modalLabel">Biến thể của <strong>@productViewModel.Product.Name</strong></h5>
+                    <button type="button" class="btn-close text-white" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body p-4">
+                    <!-- Card for Variants -->
+                    <div class="card shadow-sm rounded">
+                        <div class="card-body">
+                            <!-- Table for Variants -->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th class="text-center">Màu sắc</th>
+                                            <th class="text-center">Kích thước</th>
+                                            <th class="text-center">Số lượng tồn kho</th>
+                                            <th class="text-center">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var variant in productViewModel.ProductVariants)
+                                        {
+                                            <tr>
+                                                <td class="text-center align-middle">@variant.ColorName</td>
+                                                <td class="text-center align-middle">@variant.SizeName</td>
+                                                <td class="text-center align-middle">@variant.Stock</td>
+                                                <td class="text-center align-middle">
+                                                    <form asp-action="DeleteVariant" asp-route-id="@variant.VariantID" method="post" class="d-inline">
+                                                        @Html.AntiForgeryToken()
+                                                        <button type="submit" class="btn btn-danger rounded-pill px-3 py-1" onclick="return confirm('Bạn có chắc chắn muốn xóa biến thể này?');">
+                                                            Xóa
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchKeyword').on('input', function () {
+            var searchKeyword = $(this).val();
+
+            if (searchKeyword.length >= 2) { // Minimum length to trigger suggestions
+                $.ajax({
+                    url: '@Url.Action("GetSearchSuggestions", "Admin")',
+                    type: 'GET',
+                    data: { keyword: searchKeyword },
+                    success: function (data) {
+                        $('#suggestions').empty();
+                        if (data.length > 0) {
+                            $('#suggestions').show(); // Hiển thị danh sách gợi ý
+                            data.forEach(function(item) {
+                                $('#suggestions').append('<li class="list-group-item suggestion-item" style="cursor:pointer; height: 50px; overflow-y: auto;">' + item + '</li>');
+                            });
+                        } else {
+                            $('#suggestions').hide(); // Hide if no suggestions
+                        }
+                    }
+                    ,
+                    error: function () {
+                        $('#suggestions').hide(); // Hide on error
+                    }
+                });
+            } else {
+                $('#suggestions').hide(); // Hide suggestions if input is less than 2 characters
+            }
+        });
+
+        // Handle suggestion click
+        $(document).on('click', '.suggestion-item', function () {
+            var selectedSuggestion = $(this).text(); // Lấy tên gợi ý
+            $('#searchKeyword').val(selectedSuggestion); // Điền tên gợi ý vào input
+            $('#suggestions').hide(); // Ẩn danh sách gợi ý sau khi chọn
+            // Thêm giá trị vào input và tự động gửi form
+            $('#searchForm').submit(); // Gửi form
+        });
+
+        // Hide suggestions on focus out
+        $(document).on('focusout', '#searchKeyword', function () {
+            // Delay hiding to allow click event to trigger
+            setTimeout(function () {
+                $('#suggestions').hide();
+            }, 100);
+        });
+
+        // Hide suggestions if clicked outside
+        $(document).on('click', function (event) {
+            if (!$(event.target).closest('#searchForm').length) {
+                $('#suggestions').hide();
+            }
+        });
+    });
+</script>
+
+
+
+

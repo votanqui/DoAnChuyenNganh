@@ -1,0 +1,100 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+@media (max-width: 576px) {
+    .btn-icon {
+        font-size: 0.875rem; /* Thu nhỏ icon */
+        padding-left: 0; /* Căn icon về trái */
+    }
+}
+
+/* Ẩn sidebar trên màn hình nhỏ, hiện trên màn hình lớn */
+@media (min-width: 576px) {
+    .offcanvas {
+        display: none; /* Ẩn Offcanvas trên màn hình lớn */
+    }
+
+    .sidebar {
+        display: block; /* Hiện sidebar bình thường */
+    }
+}
+.card-img-top{
+    height:200px;
+}
+.custom-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.custom-img-1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.gap-15 {
+    margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+    .border-start {
+        border-left: none !important;
+         /* Loại bỏ border-left cho màn hình nhỏ */
+    }
+}
+.bg-section {
+   
+    background-size: cover; /* Ensures the background covers the whole area */
+    background-position: center; /* Centers the background image */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#messenger-icon {
+    position: fixed;
+    bottom: 20px; /* Khoảng cách từ đáy màn hình */
+    right: 20px; /* Khoảng cách từ mép phải màn hình */
+    background-color: #0084ff; /* Màu nền Messenger */
+    color: #fff; /* Màu biểu tượng */
+    width: 50px; /* Kích thước ô */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Làm tròn góc */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng */
+    z-index: 1000; /* Đảm bảo luôn nằm trên cùng */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    #messenger-icon:hover {
+        transform: scale(1.1); /* Phóng to khi hover */
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Tăng hiệu ứng bóng khi hover */
+    }
+
+    #messenger-icon i {
+        font-size: 24px; /* Kích thước biểu tượng */
+    }
